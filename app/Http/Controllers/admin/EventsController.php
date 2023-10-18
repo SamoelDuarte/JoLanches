@@ -58,7 +58,7 @@ class EventsController extends Controller
 
                     //envio da mensagem 
 
-                   // $mensagen->device_id =  $device->id;
+                    $mensagen->number =  "5511970471094";
                    // $mensagen->update();
                     $text =  '🎉🥘 Reserva a Sua Feijoada Especial! 🥘🎉
 
