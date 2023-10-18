@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('data_agendamento')->nullable();
             $table->string('number')->nullable();
             $table->string('name')->nullable();
+            $table->string('size')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

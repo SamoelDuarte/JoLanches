@@ -13,6 +13,7 @@ class Agendamento extends Model
         'data_agendamento',
         'number',
         'name',
+        'size',
         'status',
     ];
 

@@ -6,6 +6,7 @@ return [
         'description' => 'descrição',
         'number' => 'Número',
         'price' => 'preço',
+        'size' => 'Tamanho',
         'imageInput' => 'imagem',
     ],
     'numeric' => 'O campo :attribute deve ser um número.',

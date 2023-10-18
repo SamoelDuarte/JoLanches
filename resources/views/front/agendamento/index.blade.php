@@ -190,6 +190,32 @@
                 fill: white;
             }
         }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-label input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -213,10 +239,28 @@
                 <input type="date" hidden id="data_agendamento" name="data_agendamento"
                     value="{{ $data['data'] }}">
             </div>
+
+            
             <div class="form-group">
                 <label for="data-evento">Nome</label>
                 <input type="text" id="name" name="name">
             </div>
+            <div style="display: flex">
+                <div class="card" id="smallCard">
+                    <label class="radio-label">
+                        <input type="radio" name="size" value="small">  Pequeno
+                    </label>
+                    <p class="price">R$ 35,00</p>
+                </div>
+            
+                <div class="card" id="largeCard">
+                    <label class="radio-label">
+                        <input type="radio" name="size" value="large">  Grande
+                    </label>
+                    <p class="price">R$ 45,00</p>
+                </div>
+            </div>
+          
 
 
             <div class="form-group">

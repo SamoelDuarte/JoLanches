@@ -72,12 +72,17 @@ class AgendamentoController extends Controller
         $request->validate([
             'name' => 'required', // Exemplo de validação para a imagem
             'number' => 'required',
+            'size' => 'required',
         ]);
+
+
+
 
        
         $agendamento = Agendamento::create([
             'data_agendamento' => $request->data_agendamento,
             'name' => $request->name,
+            'size' => $request->size,
             'number' => Utils::sanitizePhone($request->number),
             'status' => "pendente",
         ]);
