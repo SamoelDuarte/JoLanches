@@ -58,7 +58,7 @@ class EventsController extends Controller
 
                     //envio da mensagem 
 
-                    $mensagen->number =  "5511970471094";
+                    $mensagen->number =  "5511919364812";
                    // $mensagen->update();
                     $text =  '🎉🥘 Reserva a Sua Feijoada Especial! 🥘🎉
 
