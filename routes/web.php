@@ -1,5 +1,13 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\AgendamentoController;
+use App\Http\Controllers\admin\ChatBotController;
+use App\Http\Controllers\admin\DeviceController;
+use App\Http\Controllers\admin\EventsController;
+use App\Http\Controllers\admin\HomeController as AdminHomeController;
+use App\Http\Controllers\admin\MenssageController;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +22,84 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('/events')->controller(EventsController::class)->group(function () {
+    Route::post('/', 'index')->name('admin.events.index');
+    Route::get('/teste', 'teste');
+});
+
+Route::prefix('/admin')->controller(AdminController::class)->group(function () {
+    Route::get('/', 'login')->name('admin.login');
+    Route::get('/sair', 'sair')->name('admin.sair');
+    Route::get('/senha', 'password')->name('admin.password');
+    Route::post('/attempt', 'attempt')->name('admin.attempt');
+
+    Route::prefix('/chat')->controller(ChatBotController::class)->group(function () {
+        Route::get('/getAtendimentoPedente', 'getAtendimentoPedente');
+    });
+
+});
+
 Route::prefix('/')->controller(HomeController::class)->group(function () {
     Route::get('/', 'index');
+});
+
+Route::prefix('/agendamento')->controller(AgendamentoController::class)->group(function () {
+    Route::get('/novo', 'new');
+    Route::post('/store', 'store')->name('agendamento.store');
+});
+
+
+Route::middleware('auth.admin')->group(function () {
+
+
+    Route::prefix('/admin')->controller(AdminHomeController::class)->group(function () {
+        Route::post('/dash', 'index')->name('admin.dashboard.index');
+    });
+    Route::prefix('/dispositivo')->controller(DeviceController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.device.index');
+        Route::get('/novo', 'create')->name('admin.device.create');
+        Route::post('/delete', 'delete')->name('admin.device.delete');
+        Route::get('/getDevices', 'getDevices');
+        Route::post('/updateStatus', 'updateStatus');
+        Route::post('/updateName', 'updateName');
+        Route::get('/getStatus', 'getStatus');
+    });
+
+    Route::prefix('/mensagem')->controller(MenssageController::class)->group(function () {
+        Route::get('/', 'create')->name('admin.message.create');
+        Route::post('/countContact', 'countContact');
+        Route::get('/getMessage', 'getMessage');
+        Route::post('/bulk', 'bulkMessage')->name('admin.message.bulk');;
+        Route::get('/relatorio-de-envio', 'index')->name('admin.message.index');;
+    });
+
+    Route::prefix('/clientes')->controller(CustomerController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.customer.index');
+        Route::get('/getCustomers', 'getCustomers');
+    });
+
+    Route::prefix('/produtos')->controller(ProductController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.product.index');
+        Route::post('/store', 'store')->name('admin.product.store');
+        Route::get('/novo', 'create')->name('admin.product.create');
+        Route::delete('/destroy/{product}', 'destroy')->name('admin.product.destroy');
+        Route::post('/edita', 'edit')->name('admin.product.edit');
+    });
+
+    Route::prefix('/chat-bot')->controller(ChatBotController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.chatbot.index');
+        Route::post('/store', 'store')->name('admin.menu-chat-bot.store');
+    });
+
+    Route::prefix('/atendimento')->controller(ChatBotController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.chat.index');
+        Route::post('/up', 'up')->name('admin.chat.up');
+        Route::get('/getChats', 'getChats');
+    });
+
+    Route::prefix('/pedidos')->controller(OrderController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.order.index');
+        Route::get('/getOrders', 'getOrders');
+        Route::get('/getOrder', 'getOrder');
+    });
 });

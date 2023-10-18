@@ -2,44 +2,53 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    use HasFactory;
+    protected $table = 'users';
+    protected $appends = [
+        'short_name',
+        'full_name',
+        'picture_path',
+    ];
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
-    ];
+        'salt',
+        'phone',
+        'role',
+        'active',
+        'picture',
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
     ];
+    protected $hidden = ['password', 'salt'];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    
+
+    public function getShortNameAttribute()
+    {
+        $exclude = [' de ', ' da ', ' do ', ' dos ', ' e '];
+        $nameBrokenIntoParts = explode(" ", str_replace($exclude, " ", $this->fist_name.$this->last_name));
+        if (count($nameBrokenIntoParts) > 1) {
+            return $nameBrokenIntoParts[0] . " " . $nameBrokenIntoParts[count($nameBrokenIntoParts) - 1];
+        }
+        return $nameBrokenIntoParts[0];
+    }
+
+    public function getFullNameAttribute()
+    {
+        
+        return $this->first_name.' '.$this->last_name;
+    }
+
+    public function getPicturePathAttribute()
+    {
+        return empty($this->picture) ? '/assets/images/no-photo.png' : '/assets/images/users/' . $this->picture;
+    }
 }
