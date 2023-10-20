@@ -52,36 +52,49 @@ class EventsController extends Controller
 
 
             foreach($devices as $device){
-                $mensagen = Messagen::where('device_id',null)->first();
+                $mensagen = Messagen::where('device_id',null)->whereNot('number' , "")->where('number', 'like', '55119%')->limit(5)->get();
+
+
+                
                 if($device->amount_message <= 39 && isset($mensagen)){
                    
 
-                    //envio da mensagem 
 
-                    $mensagen->number =  "5511919364812";
-                   // $mensagen->update();
-                    $text =  '🎉🥘 Reserva a Sua Feijoada Especial! 🥘🎉
+                    foreach($mensagen as $mensage){
 
-                    Ei! 😋 Sábado está chegando, e nós estamos preparando algo MUITO especial para você na Jo Lanches! 🌟
+                        // dd($mensagen);
+                        
+                    $mensage->device_id = $device->id;
+                    $mensage->update();
+                    $text = '🍔 Delícia à sua porta com um super desconto! Use o cupom : "RESTNOVO2389140" e ganhe R$10,00 de desconto em seu pedido no iFood da Jô Lanchês. Não perca a chance de saborear nossas deliciosas opções. Faça seu pedido agora e aproveite: https://www.ifood.com.br/delivery/sao-paulo-sp/jo-lanches-jardim-fujihara/55a59025-9625-43ef-921a-3ddcb1bea1a1 . 🍟🥤 #ComidaBoa #EntregaRápida #Desconto 
+                    para os 10 primeiros clientes.';
+                    $nomeImagen = "https://jolanches.com.br/upload/icone-2.png";
+                    $this->sendImage($device->session, $mensage->number, $nomeImagen, $text);
+
+                    }
+
+                    // $text =  '🎉🥘 Reserva a Sua Feijoada Especial! 🥘🎉
+
+                    // Ei! 😋 Sábado está chegando, e nós estamos preparando algo MUITO especial para você na Jo Lanches! 🌟
                     
                     
-                    📅 Data: Próximo Sábado
-                    ⏰ Horário: A partir das 12h
-                    📍 Local: Jo Lanches
+                    // 📅 Data: Próximo Sábado
+                    // ⏰ Horário: A partir das 12h
+                    // 📍 Local: Jo Lanches
                     
-                    Não deixe sua barriga roncar de fome, clique no link abaixo e garanta já a Sua! 🍽️👇
+                    // Não deixe sua barriga roncar de fome, clique no link abaixo e garanta já a Sua! 🍽️👇
                     
-                    https://jolanches.com.br/agendamento/novo?phone=' . $mensagen->number.
+                    // https://jolanches.com.br/agendamento/novo?phone=' . $mensagen->number.
                     
-                    '
-                    Vai ser épico! Reserve agora e conte para todo mundo! 📣 #FeijoadaNaJoLanches
+                    // '
+                    // Vai ser épico! Reserve agora e conte para todo mundo! 📣 #FeijoadaNaJoLanches
                     
-                    Mal podemos esperar para vê-lo no sábado. Prepare o apetite e a animação! 🥳
+                    // Mal podemos esperar para vê-lo no sábado. Prepare o apetite e a animação! 🥳
                     
-                    Atenciosamente,
-                    Equipe da Jo Lanches ';
-                    $nomeImagen = "https://assets.unileversolutions.com/recipes-v2/54349.jpg?im=FitAndFill=(913,320);Crop,size=(750,320),gravity=Center";
-                    $this->sendImage($device->session, $mensagen->number, $nomeImagen, $text);
+                    // Atenciosamente,
+                    // Equipe da Jo Lanches ';
+
+                   
                 }
               
             }

@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\EventsController;
 use App\Http\Controllers\admin\HomeController as AdminHomeController;
 use App\Http\Controllers\admin\MenssageController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\CategoriaController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -83,8 +84,20 @@ Route::middleware('auth.admin')->group(function () {
         Route::post('/store', 'store')->name('admin.product.store');
         Route::get('/novo', 'create')->name('admin.product.create');
         Route::delete('/destroy/{product}', 'destroy')->name('admin.product.destroy');
-        Route::post('/edita', 'edit')->name('admin.product.edit');
+        Route::put('/destroy/{product}', 'update')->name('admin.product.update');
+        Route::get('/edita', 'edit')->name('admin.product.edit');
     });
+
+    Route::prefix('/categorias')->controller(CategoriaController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.categorie.index');
+        Route::post('/', 'store')->name('admin.categorie.store');
+        Route::get('/create', 'create')->name('admin.categorie.create');
+        Route::get('/{categoria}/edit', 'edit')->name('admin.categorie.edit');
+        Route::put('/{categoria}', 'update')->name('admin.categorie.update');
+        Route::delete('/{categoria}', 'destroy')->name('admin.categorie.destroy');
+    });
+
+
 
     Route::prefix('/chat-bot')->controller(ChatBotController::class)->group(function () {
         Route::get('/', 'index')->name('admin.chatbot.index');

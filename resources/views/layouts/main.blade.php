@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="samoel@betasolucao.com.br">
-    <meta name="author" content="samoel@betasolucao.com.br">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="samoelduarte@betasolucao.com.br">
+    <meta name="author" content="samoelduarte@betasolucao.com.br">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 
@@ -15,13 +15,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyAexUoFpkweVmPfHrClf8SMzt-lzHPmiJs">
+    <script
+        src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyAexUoFpkweVmPfHrClf8SMzt-lzHPmiJs">
     </script>
     <link rel="stylesheet" href="/assets/frameworks/bootstrap/css/app.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-
+    <link href="{{ asset('/assets/css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -45,16 +46,20 @@
                         <nav class="nav">
                             <ul>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><img class="zoom" src="upload/inicio-menu.png"></a>
+                                    <a class="nav-link" href="#"><img class="zoom"
+                                            src="upload/inicio-menu.png"></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#cardapio"><img class="zoom" src="upload/cardapio-menu.png"></a>
+                                    <a class="nav-link" href="#cardapio"><img class="zoom"
+                                            src="upload/cardapio-menu.png"></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#visite"><img class="zoom" style="height: 50px;" src="upload/visitenos.png"></a>
+                                    <a class="nav-link" href="#visite"><img class="zoom" style="height: 50px;"
+                                            src="upload/visitenos.png"></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#contato"><img class="zoom" src="upload/contato-menu.png"></a>
+                                    <a class="nav-link" href="#contato"><img class="zoom"
+                                            src="upload/contato-menu.png"></a>
                                 </li>
 
 
@@ -148,11 +153,13 @@
                                 </div>
 
                                 <!-- Left and right controls -->
-                                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                <a class="left carousel-control" href="#myCarousel" role="button"
+                                    data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
-                                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                <a class="right carousel-control" href="#myCarousel" role="button"
+                                    data-slide="next">
                                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
@@ -177,7 +184,8 @@
                                 <div class="sombra-quadrada">
                                     <label class="txt-pedido txt-mouse" id="txt-mouse">Peça no Zap</label>
                                 </div>
-                                <div class="txt-pedido mostrar" id="mostrar"><i class="bi bi-whatsapp Heading" style="margin-right: 5px;"></i> Clique</div>
+                                <div class="txt-pedido mostrar" id="mostrar"><i class="bi bi-whatsapp Heading"
+                                        style="margin-right: 5px;"></i> Clique</div>
                             </div>
 
 
@@ -188,89 +196,12 @@
         </section>
 
         <section id="cardapio">
-            <div class="sombra-quadrada">
-                <div class="row cardapios">
-                    <div class="img-cardapio">
-
-                        <img src="upload/banner-cardapio3.png">
-
-                    </div>
-
-                    <div class="lista-cardapio">
-                        <div class="col-md-12" style="margin-right: -46px;">
-                            <div class="lista-cardapio1">
-                                <ul>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-right">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-right">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-right">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-right">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-right">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-right">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-right">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-right">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-right">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="lista-cardapio2">
-                                <ul>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-left">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-left">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-left">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-left">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-left">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-left">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-left">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-left">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                    <li>
-                                        <div class="row" data-aos-duration="2200" data-aos="fade-left">X-Salada............ R$ 10.00</div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
+            <div class="container">
+                @yield('content')
             </div>
         </section>
+
+
 
         <section id="visite">
 
@@ -300,10 +231,12 @@
             <div class="row footer-top">
                 <div class="col-md-6 col-lg-7">
 
-                    <img src="/upload/icone-menu.png" style="    height: 150px;
+                    <img src="/upload/icone-menu.png"
+                        style="    height: 150px;
                     width: 150px;
                     margin-top: 15px;
-                    margin-left: 15px;" alt="" class="img-fluid mb-4">
+                    margin-left: 15px;"
+                        alt="" class="img-fluid mb-4">
 
 
                     <p class="text-white mb-4">Mande uma Mensagem usando o formulário ao lado, ou
@@ -321,17 +254,20 @@
                     <div class="mb-3">
                         <div class="me-2 d-flex align-items-center">
                             <i class="fas fa-map-marker-alt fs-4 text-secondary me-2" style="margin-right: 5px;"></i>
-                            <span class="text-white"> R. Antigo Continente N° 4 Cep 04941-080 <br> <small>São Paulo – SP</small></span>
+                            <span class="text-white"> R. Antigo Continente N° 4 Cep 04941-080 <br> <small>São Paulo –
+                                    SP</small></span>
                         </div>
                     </div>
 
                     <div class="text-dark mt-3">
 
-                        <a class="bg-secondary btn py-1 px-2 text-white text-decoration-none rounded-0 me-2" href="https://www.facebook.com/444?_rdc=1&_rdr">
+                        <a class="bg-secondary btn py-1 px-2 text-white text-decoration-none rounded-0 me-2"
+                            href="https://www.facebook.com/444?_rdc=1&_rdr">
                             <i class="fab fa-facebook fs-5"></i>
                         </a>
 
-                        <a class="bg-secondary btn py-1 px-2 text-white text-decoration-none rounded-0" href="https://www.instagram.com/444.inc/">
+                        <a class="bg-secondary btn py-1 px-2 text-white text-decoration-none rounded-0"
+                            href="https://www.instagram.com/444.inc/">
                             <i class="fab fa-instagram fs-5"></i>
                         </a>
 
@@ -355,13 +291,16 @@
 
                             <div class="row">
                                 <div class="form-group mb-3">
-                                    <input type="text" name="nome" class="form-control rounded-0 lh-lg" placeholder="Nome completo" required>
+                                    <input type="text" name="nome" class="form-control rounded-0 lh-lg"
+                                        placeholder="Nome completo" required>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="email" name="email" class="form-control rounded-0 lh-lg" placeholder="E-mail" required>
+                                    <input type="email" name="email" class="form-control rounded-0 lh-lg"
+                                        placeholder="E-mail" required>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="phone" name="telefone" class="form-control rounded-0 lh-lg" placeholder="Telefone" required>
+                                    <input type="phone" name="telefone" class="form-control rounded-0 lh-lg"
+                                        placeholder="Telefone" required>
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -380,20 +319,22 @@
                 </div>
             </div>
             <div class="row bottom-footer">
-                    <div class="container">
+                <div class="container">
 
-                        <div class="row justify-content-between align-items-center">
+                    <div class="row justify-content-between align-items-center">
 
-                            <div class="col-sm-12 col-md-6 text-white">&copy; 2022 Jô Lanches - Todos os direitos reservados
-                            </div>
+                        <div class="col-sm-12 col-md-6 text-white">&copy; 2022 Jô Lanches - Todos os direitos
+                            reservados
+                        </div>
 
-                            <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-md-end text-white">
-                                <span class="me-2">Desenvolvido por <a class="zoom-maior" style="color: white;" href="https://betasolucao.com.br" target="_blank">Beta Solução<a></span>
-                            </div>
-
+                        <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-md-end text-white">
+                            <span class="me-2">Desenvolvido por <a class="zoom-maior" style="color: white;"
+                                    href="https://betasolucao.com.br" target="_blank">Beta Solução<a></span>
                         </div>
 
                     </div>
+
+                </div>
             </div>
         </div>
 
@@ -407,13 +348,15 @@
                 <div class="textwidget custom-html-widget">
                     <ul>
                         <li>
-                            <a href="https://api.whatsapp.com/send?phone=5511986123660" target="_blank" rel="noopener noreferrer">
+                            <a href="https://api.whatsapp.com/send?phone=5511986123660" target="_blank"
+                                rel="noopener noreferrer">
                                 <span class="fab fa-whatsapp what"></span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://www.facebook.com/444?_rdc=1&_rdr" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.facebook.com/444?_rdc=1&_rdr" target="_blank"
+                                rel="noopener noreferrer">
                                 <span class="fab fa-facebook face"></span>
                             </a>
                         </li>
@@ -435,7 +378,9 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 

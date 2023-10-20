@@ -18,8 +18,6 @@
         <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-
-
                 <div class="col-md-6">
                     <div class="text-center">
                         <div style="display: inline-grid;">
@@ -45,6 +43,11 @@
                             {{ old('description') }}
                         </textarea>
                     </div>
+                    <select name="category_id" class="form-control">
+                        @foreach($categories as $categoria)
+                            <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
+                        @endforeach
+                    </select>
                     <div class="form-group">
                         <label for="price">Preço</label>
                         <input type="text" name="price" id="price" class="form-control money"

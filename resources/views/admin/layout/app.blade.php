@@ -70,12 +70,20 @@
             </div>
 
             <li class="nav-item">
-                <a href="{{ route('admin.product.index') }}" class="nav-link">
-                    <i class="far fa-images"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#product"
+                    aria-expanded="true" aria-controls="product">
+                    <i class="fas fa-mail-bulk"></i>
                     <span>Produtos</span>
                 </a>
-            </li>
 
+                <div id="product" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('admin.product.index') }}">Produtos</a>
+                        <a class="collapse-item" href="{{ route('admin.categorie.index') }}">Categorías</a>
+                    </div>
+                </div>
+                
+            </li>
 
             <li class="nav-item">
                 <a href="{{ route('admin.device.index') }}" class="nav-link">

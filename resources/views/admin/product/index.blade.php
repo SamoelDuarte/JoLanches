@@ -6,6 +6,11 @@
     .rounded-image-column img {
     border-radius: 50%;
 }
+
+.element-center{
+    display: flex;
+    justify-content: center;
+}
 </style>
 @endsection
 
@@ -35,8 +40,9 @@
                     <th class="rounded-image-column">Imagem</th>
                     <th>Nome</th>
                     <th>Descrição</th>
+                    <th>Categoria</th>
                     <th>Preço</th>
-                    <th>Ações</th>
+                    <th class="element-center">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,10 +52,11 @@
                         <img src="{{ asset( $product->image) }}" alt="Imagem do Produto" class="rounded-circle rounded-product-image" style="width: 50px; height: 50px;">
                     </td>
                     <td>{{ $product->name }}</td>
-                    <td>{{ $product->description }}</td>
+                    <td>{!! $product->description !!}</td>
+                    <td>{!! $product->categoria->name !!}</td>
                     <td>{{ $product->price }}</td>
-                    <td>
-                        <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-primary">Editar</a>
+                    <td style="text-align: center;">
+                        <a href="{{ route('admin.product.edit',['id' => $product->id]) }}" class="btn btn-primary">Editar</a>
                         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-productid="{{ $product->id }}">Excluir</button>
                     </td>
                 </tr>
