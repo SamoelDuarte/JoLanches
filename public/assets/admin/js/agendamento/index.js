@@ -1,5 +1,5 @@
 var url = window.location.origin;
-console.log( url);
+console.log(url);
 $('#table-agendamento').DataTable({
     processing: true,
     serverSide: true,
@@ -8,18 +8,22 @@ $('#table-agendamento').DataTable({
         "type": "GET"
     },
     "columns": [{
-        "data": "id"
-    },{
+        "data": "data_agendamento"
+    }, {
         "data": "number"
     },
     {
-        "data": "size"
-        },
-    
+        "data": "display_size"
+    },
+
     {
         "data": "status"
     },
-    
+
+    {
+        "data": "data_agendamento"
+    },
+
     {
         "data": "status"
     }
@@ -35,9 +39,9 @@ $('#table-agendamento').DataTable({
         // if(data['display_status'] == "Desconectado"){
         //     btn = "danger";
         // }
-        // $('td:eq(0)', row).html( '<div class="imagem-round"><img src="'+data['picture']+'" /></div>');
-        // $('td:eq(2)', row).html('<button class="btn btn-'+btn+'">'+data['display_status']+'</button>');
-        // $('td:eq(3)', row).html( '<a href="javascript:;" data-toggle="modal" onClick="configModalDelete(' + data["id"] + ')" data-target="#modalDelete" class="btn btn-sm btn-danger delete"><i class="far fa-trash-alt"></i></a>');
+        $('td:eq(0)', row).html( '<label>'+data['display_created_at']+'</label>');
+        $('td:eq(4)', row).html( '<label>'+data['display_data_agendamento']+'</label>');
+         $('td:eq(5)', row).html( '<a href="javascript:;" data-toggle="modal" onClick="configModalDelete(' + data["id"] + ')" data-target="#modalDelete" class="btn btn-sm btn-danger delete"><i class="far fa-trash-alt"></i></a>');
 
 
     },

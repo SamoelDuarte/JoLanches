@@ -33,10 +33,11 @@
 
                                 <thead>
                                     <tr>
-                                        <th scope="col">ID</th>
+                                        <th scope="col">Data</th>
                                         <th scope="col">Cliente</th>
                                         <th scope="col">Tamanho</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Data Agendamento</th>
                                         <th scope="col">Ações</th>
                                     </tr>
                                 </thead>

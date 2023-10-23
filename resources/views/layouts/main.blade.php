@@ -247,14 +247,14 @@
                     <div class="mb-3">
                         <div class="me-2 d-flex align-items-center">
                             <i class="fab fa-whatsapp fs-4 text-secondary me-2" style="margin-right: 5px;"></i>
-                            <span class="text-white"> (11) 98612-3660</span>
+                            <span class="text-white"> (11) 91936-4812</span>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <div class="me-2 d-flex align-items-center">
                             <i class="fas fa-map-marker-alt fs-4 text-secondary me-2" style="margin-right: 5px;"></i>
-                            <span class="text-white"> R. Antigo Continente N° 4 Cep 04941-080 <br> <small>São Paulo –
+                            <span class="text-white"> R. José Bonifácio Pasquali n°34 Cep 04929-400 <br> <small>São Paulo –
                                     SP</small></span>
                         </div>
                     </div>
@@ -348,14 +348,14 @@
                 <div class="textwidget custom-html-widget">
                     <ul>
                         <li>
-                            <a href="https://api.whatsapp.com/send?phone=5511986123660" target="_blank"
+                            <a href="https://api.whatsapp.com/send?phone=5511919364812" target="_blank"
                                 rel="noopener noreferrer">
                                 <span class="fab fa-whatsapp what"></span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://www.facebook.com/444?_rdc=1&_rdr" target="_blank"
+                            <a href="https://www.facebook.com/jolanches" target="_blank"
                                 rel="noopener noreferrer">
                                 <span class="fab fa-facebook face"></span>
                             </a>
