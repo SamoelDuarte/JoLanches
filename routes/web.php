@@ -10,6 +10,8 @@ use App\Http\Controllers\admin\MenssageController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\CategoriaController;
 use App\Http\Controllers\HomeController;
+use App\Notifications\NewOrderNotification;
+use App\Notifications\UserNotification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,6 +70,8 @@ Route::middleware('auth.admin')->group(function () {
 
     Route::prefix('/mensagem')->controller(MenssageController::class)->group(function () {
         Route::get('/', 'create')->name('admin.message.create');
+        Route::get('/agendamentos', 'indexAgendamentos')->name('admin.message.agendamento');
+        Route::get('/getAgendamentos', 'getAgendamentos')->name('admin.message.getAgendamento');
         Route::post('/countContact', 'countContact');
         Route::get('/getMessage', 'getMessage');
         Route::post('/bulk', 'bulkMessage')->name('admin.message.bulk');;
@@ -115,4 +119,23 @@ Route::middleware('auth.admin')->group(function () {
         Route::get('/getOrders', 'getOrders');
         Route::get('/getOrder', 'getOrder');
     });
+});
+
+
+Route::get('teste1', function () {
+
+    $options = array(
+        'cluster' => 'mt1',
+        'useTLS' => true
+      );
+      $pusher = new Pusher\Pusher(
+        'e13db91a4625ab794815',
+        '78f9df6d9a0dc2f85a26',
+        '1693149',
+        $options
+      );
+    
+      $data['message'] = 'hello world';
+      $pusher->trigger('my-channel', 'my-event', $data);
+    
 });

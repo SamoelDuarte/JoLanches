@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agendamento;
 use App\Models\Customer;
 use App\Models\Messagen;
 use GuzzleHttp\Psr7\Message;
@@ -50,6 +51,18 @@ class MenssageController extends Controller
         }
         return Redirect::route('admin.message.index')->with('success','Mensagem Salva Com Sucesso');
     }
+
+    public function indexAgendamentos(){
+        $agendamentos = Agendamento::all();
+
+        return view('admin.message.agendamentos' , compact('agendamentos'));
+    }
+    public function getAgendamentos(){
+        $agendamento = Agendamento::orderBy('id', 'desc');
+        return DataTables::of($agendamento)->make(true);
+    }
+    
+
     public function formatarTexto($texto) {
         // Remover os caracteres (.-+) e espaços
         $textoFormatado = preg_replace('/[.\-+\s]+/', '', $texto);

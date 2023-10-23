@@ -9,6 +9,7 @@ use App\Models\Chat;
 use App\Models\Customer;
 use DateTime;
 use Illuminate\Http\Request;
+use Pusher\Pusher;
 
 class AgendamentoController extends Controller
 {
@@ -75,10 +76,6 @@ class AgendamentoController extends Controller
             'size' => 'required',
         ]);
 
-
-
-
-       
         $agendamento = Agendamento::create([
             'data_agendamento' => $request->data_agendamento,
             'name' => $request->name,
@@ -86,6 +83,20 @@ class AgendamentoController extends Controller
             'number' => Utils::sanitizePhone($request->number),
             'status' => "pendente",
         ]);
+
+        $options = array(
+            'cluster' => 'mt1',
+            'useTLS' => true
+          );
+          $pusher = new Pusher(
+            'e13db91a4625ab794815',
+            '78f9df6d9a0dc2f85a26',
+            '1693149',
+            $options
+          );
+        
+          $data['message'] = 'Novo Agendamento';
+          $pusher->trigger('my-channel', 'my-event', $data);
 
         $text = ' <h1>Parabéns pelo Agendamento!</h1>
         <p>Sua Feijoada vai ser separada com todo carinho e capricho.</p>

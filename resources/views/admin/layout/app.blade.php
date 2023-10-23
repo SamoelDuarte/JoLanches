@@ -82,7 +82,7 @@
                         <a class="collapse-item" href="{{ route('admin.categorie.index') }}">Categorías</a>
                     </div>
                 </div>
-                
+
             </li>
 
             <li class="nav-item">
@@ -111,25 +111,26 @@
                     <div class="notification-icon">
                         <i class="fa fa-bell"></i>
                         <span class="notification-count">..</span>
-                      </div>
+                    </div>
                 </a>
-              
+
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#message"
                     aria-expanded="true" aria-controls="message">
                     <i class="fas fa-mail-bulk"></i>
-                    <span>Menssagem</span>
+                    <span>Mensagem</span>
                 </a>
 
                 <div id="message" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('admin.message.create') }}">Envio em Massa</a>
                         <a class="collapse-item" href="{{ route('admin.message.index') }}">Rolatório de Envio</a>
+                        <a class="collapse-item" href="{{ route('admin.message.agendamento') }}">Agendamentos</a>
                     </div>
                 </div>
-                
+
             </li>
 
             {{-- <li class="nav-item">
@@ -195,6 +196,24 @@
                         <ul id="notificacoes">
                             <!-- Aqui é onde as notificações aparecerão -->
                         </ul>
+
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="AlertAgendamento" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-calendar-alt fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter countAgendamento">0</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="AlertAgendamento">
+                                <h6 class="dropdown-header">Agendamentos</h6>
+                                <div class="dropdown-agendamento"></div>
+                                <a class="dropdown-item text-center small text-gray-500" href="/mensagem/agendamentos">Ver todos os
+                                    Agendamentos</a>
+                            </div>
+                        </li>
+
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsOrder" role="button"
@@ -281,7 +300,7 @@
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <a href="https://betasolucao.com.br" target="_blank">
-                            <span>Copyright &copy;   Solução {{ now()->year }}</span>
+                            <span>Copyright &copy; Solução {{ now()->year }}</span>
                         </a>
 
                     </div>
@@ -321,12 +340,41 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('/assets/admin/js/scripts.min.js') }}"></script>
     <script src="{{ asset('/assets/admin/js/main.js') }}"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+
+    @vite(['resources/js/app.js'])
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 
 
+
     @yield('scripts')
     <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('e13db91a4625ab794815', {
+            cluster: 'mt1'
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+            var dropdownAgendamento = document.querySelector('.dropdown-agendamento');
+            var notificationItem = document.createElement('li');
+            notificationItem.classList.add('dropdown-item'); // Adicione classes de estilo, se necessário
+            notificationItem.innerHTML = data.message; // Use a mensagem recebida
+
+            // Adicione a notificação à lista
+            dropdownAgendamento.appendChild(notificationItem);
+
+            // Atualize o contador incrementando em 1
+            var countAgendamento = document.querySelector('.countAgendamento');
+            countAgendamento.innerText = parseInt(countAgendamento.innerText) + 1;
+
+            var audio = document.getElementById('myAudio');
+                som.play();
+        });
+
         verificarCondicao();
         navigator.mediaDevices.getUserMedia({
                 audio: true
@@ -350,16 +398,16 @@
                 success: function(response) {
 
                     var audio = document.getElementById('myAudio');
-                  
+
                     if (response > '0') {
 
-                          som.play();
+                        som.play();
                         document.querySelector('.notification-count').textContent = response;
 
                     } else {
-                          som.pause();
+                        som.pause();
                         document.querySelector('.notification-count').textContent = response;
-                      
+
 
                     }
                 }
