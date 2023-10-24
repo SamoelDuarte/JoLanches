@@ -72,7 +72,7 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required',
             'category_id' => 'required',
-            'imageInput' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Verifique os requisitos da imagem
+            'imageInput' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Verifique os requisitos da imagem
         ]);
 
 
