@@ -666,18 +666,18 @@ body {
 .pedido {
     width: 200px;
     height: 70px;
-    background: #676470;
+    background: #ffffff;
     transition: all 0.3s ease;
 }
 
 .pedido
 {
     position: relative;
-    color: white;
+    color: rgb(221, 16, 16);
 }
 .pedido:hover
 {
-    background: rgb(10, 199, 10);
+    background: rgb(255, 255, 255);
         border-radius:100%;
 }
 .txt-pedido {

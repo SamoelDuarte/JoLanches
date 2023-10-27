@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="samoelduarte@betasolucao.com.br">
+    <meta name="description" content="joanadarc@jolanches.com.br">
     <meta name="author" content="samoelduarte@betasolucao.com.br">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
@@ -182,10 +182,9 @@
 
                             <div class="pedido passar_mouse" id="passar_mouse">
                                 <div class="sombra-quadrada">
-                                    <label class="txt-pedido txt-mouse" id="txt-mouse">Peça no Zap</label>
+                                    <label class="txt-pedido txt-mouse" id="txt-mouse">Peça no Ifood</label>
                                 </div>
-                                <div class="txt-pedido mostrar" id="mostrar"><i class="bi bi-whatsapp Heading"
-                                        style="margin-right: 5px;"></i> Clique</div>
+                                <div class="txt-pedido mostrar" id="mostrar"><a href="https://www.ifood.com.br/delivery/sao-paulo-sp/jo-lanches-jardim-fujihara/55a59025-9625-43ef-921a-3ddcb1bea1a1" target="_blank"><img src="/assets/images/ifood.png" style="width: 80px; height: 52px;" alt=""></a></div>
                             </div>
 
 

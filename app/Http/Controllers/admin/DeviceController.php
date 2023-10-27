@@ -36,6 +36,7 @@ class DeviceController extends Controller
         $qrcodeImgSrc = $this->getQrCode($device->session);
 
         return view('admin.device.create', compact('device', 'qrcodeImgSrc'));
+        
     }
 
     public function getDevices()
@@ -70,6 +71,7 @@ class DeviceController extends Controller
     function getQrCode($session)
     {
 
+        
         // URL da requisição
         $url = env('APP_URL_ZAP').'/sessions/add';
 

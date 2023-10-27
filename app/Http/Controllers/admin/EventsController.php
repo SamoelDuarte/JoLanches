@@ -52,7 +52,7 @@ class EventsController extends Controller
 
 
         foreach ($devices as $device) {
-            $mensagen = Messagen::where('device_id', null)->whereNot('number', "")->where('number', 'like', '55119%')->get();
+            $mensagen = Messagen::where('device_id', null)->whereNot('number', "")->where('number', 'like', '55119%')->limit(7)->get();
 
 
 
@@ -66,10 +66,10 @@ class EventsController extends Controller
 
                     $mensage->device_id = $device->id;
                     $mensage->update();
-                    $text = '🍔 Delícia à sua porta com um super desconto! Use o cupom : "RESTNOVO2389140" e ganhe R$10,00 de desconto em seu pedido no iFood da Jô Lanchês. Não perca a chance de saborear nossas deliciosas opções. Faça seu pedido agora e aproveite: https://www.ifood.com.br/delivery/sao-paulo-sp/jo-lanches-jardim-fujihara/55a59025-9625-43ef-921a-3ddcb1bea1a1 . 🍟🥤 #ComidaBoa #EntregaRápida #Desconto 
-                    para os 10 primeiros clientes.';
+                    $text = 'Sextou na Jo Lanches! 🍔🍟 Peça agora no nosso site jolanches.com.br, no iFood  e use o cupom RESTNOVO2389140 para ganhar 
+                    R$10 de desconto em seu pedido. Aproveite e tenha um delicioso início de fim de semana!';
                     // $nomeImagen = "https://jolanches.com.br/upload/icone-2.png";
-                    $nomeImagen2 = "https://storage.googleapis.com/domain-images/4100bc68-32f4-4086-8cc9-2170568475e5/products/gallery_7e81cf53-99d4-439c-bc25-6bc38033b71a.jpg";
+                    $nomeImagen2 = "https://tanaondabar.com.br/wp-content/uploads/2013/07/LANCHES-1.png";
                     $this->sendImage($device->session, $mensage->number, $nomeImagen2, $text);
                     
 

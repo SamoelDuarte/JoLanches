@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('admin/layout/app')
 
 
 @section('css')
@@ -6,103 +6,119 @@
 @endsection
 
 @section('content')
-    <section id="device">
-        <!-- Page Heading -->
+    <section>
         <div class="page-header-content py-3">
-
-            <div class="d-sm-flex align-items-center justify-content-between">
-                <h1 class="h3 mb-0 text-gray-800">Dispositivos</h1>
-                <a href="{{ route('admin.device.create') }}"
-                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                    <i class="fas fa-plus text-white-50"></i> Nova Dispositivos
-                </a>
-            </div>
 
             <ol class="breadcrumb mb-0 mt-4">
                 <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Dispositivos</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.device.index') }}">Dispositivos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Novo Dispositivo</li>
             </ol>
 
         </div>
-        <!-- Content Row -->
         <div class="row">
-            <!-- Content Column -->
-            <div class="col-lg-12 mb-4">
-                <!-- Project Card Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-body">
-                        <div class="table-device">
-                            <table class="table table-bordered" id="table-device">
-
-                                <thead>
-                                    <tr>
-                                        <th scope="col">img</th>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Ações</th>
-                                    </tr>
-                                </thead>
-
-                            </table>
+            <div class="col-md-6 ">
+                <div class="card-header">
+                    <h4>{{ __('How To Scan?') }}</h4>
+                    <div class="card-header-action">
+                        <a href="#" class="btn btn-sm btn-neutral">
+                            <i class="fas fa-lightbulb"></i>&nbsp{{ __('Guide') }}
+                        </a>
+                    </div>
+                </div>
+                <div class="card qr-code">
+                    
+                    <div id="preload">
+                        <div class="loader"></div>
+                    </div>
+                    <img id="qrcode-img" src="{{ $qrcodeImgSrc }}" alt="QR Code" />
+                    <div class="card-footer server_connect " id="footer-qr-code" style="display: none">
+                        <div class=" ">
+                            {{ __('Conectado  😎 ') }}
                         </div>
                     </div>
                 </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>{{ __('How To Scan?') }}</h4>
+                            <div class="card-header-action">
+                                <a href="#" class="btn btn-sm btn-neutral">
+                                    <i class="fas fa-lightbulb"></i>&nbsp{{ __('Guide') }}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <img src="{{ asset('assets/images/scan-demo.gif') }}" class="w-100">
+                        </div>
+                        <div class="card-footer">
+                            <div class="activities">
+                                <div class="activity">
+                                    <div class="activity-icon bg-primary text-white shadow-primary">
+                                        <i class="ni ni-mobile-button"></i>
+                                    </div>
+                                    <div class="activity-detail">
+                                        <div class="mb-2">
+                                            <span class="text-job text-primary">{{ __('Step 1') }}</span>
+                                            <span class="bullet"></span>
+                                        </div>
+                                        <p>{{ __('Open WhatsApp on your phone') }}</p>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-icon bg-primary text-white shadow-primary">
+                                        <i class="ni ni-active-40"></i>
+                                    </div>
+                                    <div class="activity-detail">
+                                        <div class="mb-2">
+                                            <span class="text-job text-primary">{{ __('Step 2') }}</span>
+                                            <span class="bullet"></span>
+                                        </div>
+                                        <p>{{ __('Tap Menu or Settings and select Linked Devices') }}</p>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-icon bg-primary text-white shadow-primary">
+                                        <i class="ni ni-active-40"></i>
+                                    </div>
+                                    <div class="activity-detail">
+                                        <div class="mb-2">
+                                            <span class="text-job text-primary">{{ __('Step 3') }}</span>
+                                            <span class="bullet"></span>
+                                        </div>
+                                        <p>{{ __('Tap on Link a Device') }}</p>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-icon bg-primary text-white shadow-primary">
+                                        <i class="fa fa-qrcode"></i>
+                                    </div>
+                                    <div class="activity-detail">
+                                        <div class="mb-2">
+                                            <span class="text-job text-primary">{{ __('Step 4') }}</span>
+                                            <span class="bullet"></span>
+                                        </div>
+                                        <p>{{ __('Point your phone to this screen to capture the code') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <input type="hidden" name="id" id="id_device" value="{{ $device->id }}">
+                <input type="hidden" name="session" id="session_device" value="{{ $device->session }}">
+
+
             </div>
         </div>
     </section>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                    <h5 class="py-3 m-0">Tem certeza que deseja excluir este Dispositivo?</h5>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Fechar</button>
-                    <form action="{{ route('admin.device.delete') }}" method="post" class="float-right">
-                        @csrf
-                        <input type="hidden" id="id_device" name="id_device">
-                        <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modalUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="py-3 m-0">Atualizar Status</h5>
-                </div>
-                <form action="" method="post">
-                    @csrf
-                    <div class="modal-body text-center">
-                        <div class="form-group">
-                            <label for="">Status</label>
-                            <select class="form-control" name="status" id="status">
-                                <option id="survey_active" value="active">Ativo</option>
-                                <option id="survey_inative" value="inative">Inativo</option>
-                                <option id="survey_closed" value="closed">Encerrado</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-
-                        <input type="hidden" id="id_survey" name="id_survey">
-                        <button type="submit" class="btn btn-danger btn-sm">salvar</button>
-
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 @endsection
+
 @section('scripts')
-    <script src="{{ asset('/assets/admin/js/device/index.js') }}"></script>
+    <script src="{{ asset('/assets/admin/js/device/create.js') }}"></script>
 @endsection
