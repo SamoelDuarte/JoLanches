@@ -64,43 +64,43 @@ class EventsController extends Controller
                   
                     // dd($mensagen);
 
-                    $mensage->device_id = $device->id;
-                    $mensage->update();
-                    $text = 'Sextou na Jo Lanches! 🍔🍟 Peça agora no nosso site jolanches.com.br, no iFood  e use o cupom RESTNOVO2389140 para ganhar 
-                    R$10 de desconto em seu pedido. Aproveite e tenha um delicioso início de fim de semana!';
-                    // $nomeImagen = "https://jolanches.com.br/upload/icone-2.png";
-                    $nomeImagen2 = "https://tanaondabar.com.br/wp-content/uploads/2013/07/LANCHES-1.png";
-                    $this->sendImage($device->session, $mensage->number, $nomeImagen2, $text);
+                    // $mensage->device_id = $device->id;
+                    // $mensage->update();
+                    // $text = 'Sextou na Jo Lanches! 🍔🍟 Peça agora no nosso site jolanches.com.br, no iFood  e use o cupom RESTNOVO2389140 para ganhar 
+                    // R$10 de desconto em seu pedido. Aproveite e tenha um delicioso início de fim de semana!';
+                    // // $nomeImagen = "https://jolanches.com.br/upload/icone-2.png";
+                    // $nomeImagen2 = "https://tanaondabar.com.br/wp-content/uploads/2013/07/LANCHES-1.png";
+                    // $this->sendImage($device->session, $mensage->number, $nomeImagen2, $text);
                     
 
 
-                    // $text =  '🎉🥘 Reserva a Sua Feijoada Especial! 🥘🎉
+                    $text =  '🎉🥘 Reserva a Sua Feijoada Especial! 🥘🎉
 
-                    // Ei! 😋 Sábado está chegando, e nós estamos preparando algo MUITO especial para você na Jo Lanches! 🌟
+                    Ei! 😋 Sábado está chegando, e nós estamos preparando algo MUITO especial para você na Jo Lanches! 🌟
 
 
-                    // 📅 Data: Próximo Sábado
-                    // ⏰ Horário: A partir das 12h
-                    // 📍 Local: Jo Lanches
+                    📅 Data: Próximo Sábado
+                    ⏰ Horário: A partir das 12h
+                    📍 Local: Jo Lanches
 
-                    // Não deixe sua barriga roncar de fome, clique no link abaixo e garanta já a Sua! 🍽️👇
+                    Não deixe sua barriga roncar de fome, clique no link abaixo e garanta já a Sua! 🍽️👇
 
-                    // https://jolanches.com.br/agendamento/novo?phone=' . $mensage->number.
+                    https://jolanches.com.br/agendamento/novo?phone=' . $mensage->number.
 
-                    // '
-                    // Vai ser épico! Reserve agora e conte para todo mundo! 📣 #FeijoadaNaJoLanches
+                    '
+                    Vai ser épico! Reserve agora e conte para todo mundo! 📣 #FeijoadaNaJoLanches
 
-                    // Mal podemos esperar para vê-lo no sábado. Prepare o apetite e a animação! 🥳
+                    Mal podemos esperar para vê-lo no sábado. Prepare o apetite e a animação! 🥳
 
-                    // Atenciosamente,
-                    // Equipe da Jo Lanches ';
+                    Atenciosamente,
+                    Equipe da Jo Lanches ';
 
-                    //   $mensage->device_id = $device->id;
-                    // $mensage->update();
+                      $mensage->device_id = $device->id;
+                    $mensage->update();
                     
                    
-                    // $nomeImagen = "https://assets.unileversolutions.com/recipes-v2/54349.jpg?im=FitAndFill=(913,320);Crop,size=(750,320),gravity=Center";
-                    // $this->sendImage($device->session, $mensage->number, $nomeImagen, $text);
+                    $nomeImagen = "https://assets.unileversolutions.com/recipes-v2/54349.jpg?im=FitAndFill=(913,320);Crop,size=(750,320),gravity=Center";
+                    $this->sendImage($device->session, $mensage->number, $nomeImagen, $text);
 
                     echo 'enviado : '.$mensage->number.' <br>';
 

@@ -195,9 +195,9 @@
         </section>
 
         <section id="cardapio">
-            <div class="container">
+         
                 @yield('content')
-            </div>
+       
         </section>
 
 
