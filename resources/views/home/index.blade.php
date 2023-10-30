@@ -91,9 +91,96 @@
             /* Permite que os cards se empilhem em telas menores */
         }
     }
+
+    .banner-prato-dia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  margin: 30px;
+  background-size: cover;
+}
+
+.banner-prato-dia::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://www.nossoponto.com.br/upl/noticias/Picadao_de_Patinho_ao_Molho_de_Vinho.jpg");
+  background-size: cover;
+  filter: blur(10px);
+  z-index: -1; /* Coloca o elemento pseudo em um nível de z-index inferior */
+}
+
+
+.zoom-prato-dia {
+  transform: scale(1.2); /* Aplica o efeito de zoom na imagem do prato do dia */
+  transition: transform 0.3s ease;
+}
+
+.circle-prato-dia {
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.circle-prato-dia img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.info-prato-dia {
+  flex: 1;
+  margin: 20px
+}
+
+.info-prato-dia  h2 {
+  font-size: 24px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.info-prato-dia  p {
+  font-size: 16px;
+  color: #ffffff;
+  margin: 10px 0;
+}
 </style>
 
 @section('content')
+<div class="col-12">
+    <div class="page-title">
+        <div class="col-md-8 text-center">
+            <h2 class="text-uppercase ">
+                <b>Prato</b> do Dia 
+            </h2>
+        </div>
+    </div>
+
+</div>
+<div class="prato-dia">
+    <div class="banner-prato-dia">
+
+        <div class="circle-prato-dia">
+          <img src="https://www.nossoponto.com.br/upl/noticias/Picadao_de_Patinho_ao_Molho_de_Vinho.jpg" alt="Prato do Dia">
+        </div>
+        <div class="info-prato-dia">
+          <h2>Picadão</h2>
+          <p> Arroz - Feijão - Picadão - Macarrão Alho e Óleo - Salada(Alface e Tomate) R$ 15.00 .</p>
+        </div>
+      </div>
+</div>
+
+
     <div class="salgados">
         <div class="banner">
             <div class="card">

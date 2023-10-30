@@ -74,33 +74,43 @@ class EventsController extends Controller
                     
 
 
-                    $text =  '🎉🥘 Reserva a Sua Feijoada Especial! 🥘🎉
+                    //Feijoada
+                    // $text =  '🎉🥘 Reserva a Sua Feijoada Especial! 🥘🎉
 
-                    Ei! 😋 Sábado está chegando, e nós estamos preparando algo MUITO especial para você na Jo Lanches! 🌟
+                    // Ei! 😋 Sábado está chegando, e nós estamos preparando algo MUITO especial para você na Jo Lanches! 🌟
 
 
-                    📅 Data: Próximo Sábado
-                    ⏰ Horário: A partir das 12h
-                    📍 Local: Jo Lanches
+                    // 📅 Data: Próximo Sábado
+                    // ⏰ Horário: A partir das 12h
+                    // 📍 Local: Jo Lanches
 
-                    Não deixe sua barriga roncar de fome, clique no link abaixo e garanta já a Sua! 🍽️👇
+                    // Não deixe sua barriga roncar de fome, clique no link abaixo e garanta já a Sua! 🍽️👇
 
-                    https://jolanches.com.br/agendamento/novo?phone=' . $mensage->number.
+                    // https://jolanches.com.br/agendamento/novo?phone=' . $mensage->number.
 
-                    '
-                    Vai ser épico! Reserve agora e conte para todo mundo! 📣 #FeijoadaNaJoLanches
+                    // '
+                    // Vai ser épico! Reserve agora e conte para todo mundo! 📣 #FeijoadaNaJoLanches
 
-                    Mal podemos esperar para vê-lo no sábado. Prepare o apetite e a animação! 🥳
+                    // Mal podemos esperar para vê-lo no sábado. Prepare o apetite e a animação! 🥳
 
-                    Atenciosamente,
-                    Equipe da Jo Lanches ';
+                    // Atenciosamente,
+                    // Equipe da Jo Lanches ';
 
-                      $mensage->device_id = $device->id;
-                    $mensage->update();
+                    //   $mensage->device_id = $device->id;
+                    // $mensage->update();
                     
                    
-                    $nomeImagen = "https://assets.unileversolutions.com/recipes-v2/54349.jpg?im=FitAndFill=(913,320);Crop,size=(750,320),gravity=Center";
-                    $this->sendImage($device->session, $mensage->number, $nomeImagen, $text);
+                   
+
+                       $mensage->device_id = $device->id;
+                    $mensage->update();
+                    $text = '😋 Delicie-se com nosso picadão marmitex, uma explosão de sabores em cada garfada. Peça já o seu e 
+                    saboreie uma refeição inesquecível em jolanches.com.br! 🍔🍟🥗';
+                    // $nomeImagen = "https://jolanches.com.br/upload/icone-2.png";
+                    $nomeImagen2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fJPdwcANmHUFp5j_PUGH5zYtiKZcrdRcnw&usqp=CAU";
+                    $this->sendImage($device->session, $mensage->number, $nomeImagen2, $text);
+                    
+                    $this->sendImage($device->session, $mensage->number, $nomeImagen2, $text);
 
                     echo 'enviado : '.$mensage->number.' <br>';
 
