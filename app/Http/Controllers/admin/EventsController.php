@@ -109,8 +109,6 @@ class EventsController extends Controller
                     // $nomeImagen = "https://jolanches.com.br/upload/icone-2.png";
                     $nomeImagen2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fJPdwcANmHUFp5j_PUGH5zYtiKZcrdRcnw&usqp=CAU";
                     $this->sendImage($device->session, $mensage->number, $nomeImagen2, $text);
-                    
-                    $this->sendImage($device->session, $mensage->number, $nomeImagen2, $text);
 
                     echo 'enviado : '.$mensage->number.' <br>';
 
