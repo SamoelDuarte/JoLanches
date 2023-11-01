@@ -157,7 +157,7 @@
 </style>
 
 @section('content')
-<div class="col-12">
+{{-- <div class="col-12">
     <div class="page-title">
         <div class="col-md-8 text-center">
             <h2 class="text-uppercase ">
@@ -178,7 +178,7 @@
           <p> Arroz - Feijão - Picadão - Macarrão Alho e Óleo - Salada(Alface e Tomate) R$ 15.00 .</p>
         </div>
       </div>
-</div>
+</div> --}}
 
 
     <div class="salgados">
