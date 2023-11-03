@@ -109,7 +109,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("https://www.nossoponto.com.br/upl/noticias/Picadao_de_Patinho_ao_Molho_de_Vinho.jpg");
+  background-image: url("https://minervafoods.com/wp-content/uploads/2022/12/Strogonoff-de-Carne-HOR-1-scaled-1.jpg");
   background-size: cover;
   filter: blur(10px);
   z-index: -1; /* Coloca o elemento pseudo em um nível de z-index inferior */
@@ -157,7 +157,7 @@
 </style>
 
 @section('content')
-{{-- <div class="col-12">
+<div class="col-12">
     <div class="page-title">
         <div class="col-md-8 text-center">
             <h2 class="text-uppercase ">
@@ -171,14 +171,14 @@
     <div class="banner-prato-dia">
 
         <div class="circle-prato-dia">
-          <img src="https://www.nossoponto.com.br/upl/noticias/Picadao_de_Patinho_ao_Molho_de_Vinho.jpg" alt="Prato do Dia">
+          <img src="https://minervafoods.com/wp-content/uploads/2022/12/Strogonoff-de-Carne-HOR-1-scaled-1.jpg" alt="Prato do Dia">
         </div>
         <div class="info-prato-dia">
           <h2>Picadão</h2>
           <p> Arroz - Feijão - Picadão - Macarrão Alho e Óleo - Salada(Alface e Tomate) R$ 15.00 .</p>
         </div>
       </div>
-</div> --}}
+</div>
 
 
     <div class="salgados">
