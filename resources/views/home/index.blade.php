@@ -93,7 +93,7 @@
         }
     }
 
-    .prato-do-dia {
+    .prato-dia {
         background: #0000004d;
         border-radius: 16px;
     }
