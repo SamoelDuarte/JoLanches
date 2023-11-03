@@ -174,7 +174,7 @@
           <img src="https://minervafoods.com/wp-content/uploads/2022/12/Strogonoff-de-Carne-HOR-1-scaled-1.jpg" alt="Prato do Dia">
         </div>
         <div class="info-prato-dia">
-          <h2>Picadão</h2>
+          <h2>Strogonof</h2>
           <p> Arroz - Feijão - Strogonoff - Batata palha - Salada(Alface e Tomate) R$ 15.00 .</p>
         </div>
       </div>
