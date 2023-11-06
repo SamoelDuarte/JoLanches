@@ -52,7 +52,7 @@ class EventsController extends Controller
 
 
         foreach ($devices as $device) {
-            $mensagen = Messagen::where('device_id', null)->whereNot('number', "")->where('number', 'like', '55119%')->limit(7)->get();
+            $mensagen = Messagen::where('device_id', null)->whereNot('number', "")->where('number', 'like', '55119%')->limit(10)->get();
 
 
 
@@ -75,40 +75,37 @@ class EventsController extends Controller
 
 
                     //Feijoada
-                    // $text =  '🎉🥘 Reserva a Sua Feijoada Especial! 🥘🎉
+                    $text =  '🎉🥘 Reserva a Sua Feijoada Especial! 🥘🎉
 
-                    // Ei! 😋 Sábado está chegando, e nós estamos preparando algo MUITO especial para você na Jo Lanches! 🌟
+                    Ei! 😋 Hoje é Sábado , e nós estamos preparando uma Feijoada  MUITO especial para você na Jo Lanches! 🌟
 
 
-                    // 📅 Data: Próximo Sábado
-                    // ⏰ Horário: A partir das 12h
-                    // 📍 Local: Jo Lanches
 
-                    // Não deixe sua barriga roncar de fome, clique no link abaixo e garanta já a Sua! 🍽️👇
+                     clique no link abaixo e garanta já a Sua! 🍽️👇
 
-                    // https://jolanches.com.br/agendamento/novo?phone=' . $mensage->number.
+                    https://jolanches.com.br/agendamento/novo?phone=' . $mensage->number.
 
-                    // '
-                    // Vai ser épico! Reserve agora e conte para todo mundo! 📣 #FeijoadaNaJoLanches
+                    '
+                    Reserve agora e conte para todo mundo! 📣 #FeijoadaNaJoLanches
 
-                    // Mal podemos esperar para vê-lo no sábado. Prepare o apetite e a animação! 🥳
+                     Prepare o apetite ! 🥳
 
-                    // Atenciosamente,
-                    // Equipe da Jo Lanches ';
+                    Atenciosamente,
+                    Equipe da Jo Lanches ';
 
-                    //   $mensage->device_id = $device->id;
-                    // $mensage->update();
+                      $mensage->device_id = $device->id;
+                    $mensage->update();
                     
                    
                    
 
-                       $mensage->device_id = $device->id;
-                    $mensage->update();
-                    $text = '😋 Delicie-se com nosso picadão marmitex, uma explosão de sabores em cada garfada. Peça já o seu e 
-                    saboreie uma refeição inesquecível em jolanches.com.br! 🍔🍟🥗';
-                    // $nomeImagen = "https://jolanches.com.br/upload/icone-2.png";
-                    $nomeImagen2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fJPdwcANmHUFp5j_PUGH5zYtiKZcrdRcnw&usqp=CAU";
-                    $this->sendImage($device->session, $mensage->number, $nomeImagen2, $text);
+                    //    $mensage->device_id = $device->id;
+                    // $mensage->update();
+                    // $text = '😋 Delicie-se com nosso picadão marmitex, uma explosão de sabores em cada garfada. Peça já o seu e 
+                    // saboreie uma refeição inesquecível em jolanches.com.br! 🍔🍟🥗';
+                    $nomeImagen = "https://media.istockphoto.com/id/1297461651/pt/foto/feijoada-typical-brazilian-food-with-black-beans-pork-and-sausage.jpg?s=612x612&w=0&k=20&c=XOsSazeH5B_YORCOvvMg9dcSUjY6uq6N_Y5RgWOxdGA=";
+                    // $nomeImagen2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fJPdwcANmHUFp5j_PUGH5zYtiKZcrdRcnw&usqp=CAU";
+                    $this->sendImage($device->session, $mensage->number, $nomeImagen, $text);
 
                     echo 'enviado : '.$mensage->number.' <br>';
 
