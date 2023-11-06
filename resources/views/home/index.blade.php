@@ -179,7 +179,7 @@
         <div class="banner-prato-dia">
 
             <div class="circle-prato-dia">
-                <img src="https://minervafoods.com/wp-content/uploads/2022/12/Strogonoff-de-Carne-HOR-1-scaled-1.jpg"
+                <img src="https://img-global.cpcdn.com/recipes/383c043f6a719121/680x482cq70/foto-principal-da-receita-picadao-com-batatas-e-cenouras.jpg"
                     alt="Prato do Dia">
             </div>
             <div class="info-prato-dia">
