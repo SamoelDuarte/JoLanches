@@ -184,7 +184,7 @@
             </div>
             <div class="info-prato-dia">
                 <h2>Picadão</h2>
-                <p> Arroz - Feijão -Picadão- Macarrão - Salada(Alface e Tomate) R$ 14.00 .</p>
+                <p> Arroz - Feijão -Picadão- Macarrão - Salada(Alface e Tomate) R$ 15.00 .</p>
             </div>
         </div>
     </div>
