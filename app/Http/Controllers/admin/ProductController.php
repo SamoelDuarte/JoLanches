@@ -17,6 +17,7 @@ class ProductController extends Controller
         return view('admin.product.index', compact('products'));
     }
 
+
     public function create()
     {
         $categories = Categoria::all();
@@ -40,22 +41,34 @@ class ProductController extends Controller
 
         $data = $request->validate([
             'name' => 'required',
-            'description' => 'required',
-            'category_id' => 'required',
             'price' => 'required',
-            'imageInput' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Verifica se é uma imagem válida
         ]);
 
-        if ($request->hasFile('imageInput')) {
-            // Se uma nova imagem foi enviada, exclua a imagem anterior
-            if ($product->image) {
-                Storage::delete($product->image);
+        if($request->input('sistem')){
+
+
+        }else{
+            $data = $request->validate([
+                'description' => 'required',
+                'category_id' => 'required',
+                'imageInput' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Verifica se é uma imagem válida
+            ]);
+
+            if ($request->hasFile('imageInput')) {
+                // Se uma nova imagem foi enviada, exclua a imagem anterior
+                if ($product->image) {
+                    Storage::delete($product->image);
+                }
+                $image = $request->file('imageInput');
+                // Salve a nova imagem
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('assets/images/products'), $imageName);
             }
-            $image = $request->file('imageInput');
-            // Salve a nova imagem
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('assets/images/products'), $imageName);
+
         }
+
+       
+
 
         $product->update($data);
 
@@ -69,32 +82,52 @@ class ProductController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'description' => 'required',
             'price' => 'required',
-            'category_id' => 'required',
-            'imageInput' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Verifique os requisitos da imagem
         ]);
 
 
 
-        $image = $request->file('imageInput');
 
-        if ($image) {
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('assets/images/products'), $imageName);
-
+        if ($request->input('sistem')) {
+          
             $product = new Product();
             $product->name = $request->input('name');
-            $product->description = $request->input('description');
-            $product->category_id = $request->input('category_id');
             $product->price = $request->input('price');
-            $product->image = "/assets/images/products/" . $imageName;
+            $product->sistem = $request->input('sistem');
             $product->save();
 
-            return redirect()->route('admin.product.index')->with('success', 'Produto adicionado com sucesso.');
         } else {
-            return redirect()->back()->with('error', 'Falha ao fazer upload da imagem.');
+            $request->validate([
+                'description' => 'required',
+                'category_id' => 'required',
+                'imageInput' => 'image|mimes:jpeg,png,jpg,gif|max:2048|required', // Verifique os requisitos da imagem
+            ]);
+
+            $image = $request->file('imageInput');
+            if ($image) {
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('assets/images/products'), $imageName);
+    
+                $product = new Product();
+                $product->name = $request->input('name');
+                $product->description = $request->input('description');
+                $product->category_id = $request->input('category_id');
+                $product->price = $request->input('price');
+                $product->image = "/assets/images/products/" . $imageName;
+                $product->save();
+    
+              
+            } else {
+                return redirect()->back()->with('error', 'Falha ao fazer upload da imagem.');
+            }
+
+            
         }
+
+        return redirect()->route('admin.product.index')->with('success', 'Produto adicionado com sucesso.');
+       
+
+       
     }
     public function destroy($id)
     {

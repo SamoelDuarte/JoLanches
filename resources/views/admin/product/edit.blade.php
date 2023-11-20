@@ -1,6 +1,11 @@
 @extends('admin.layout.app')
 
 @section('css')
+<style>
+    .note-editable{
+        height: 90px !important;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -21,7 +26,7 @@
                 <div class="col-md-6">
                     <div class="text-center">
                         <div style="display: inline-grid;">
-                            <img id="previewImage" src="{{ $product->image }}" alt="Preview" class="rounded-circle" style="width: 150px; height: 150px;">
+                            <img id="previewImage" src="{{ $product->image ? asset( $product->image) : "/assets/images/sem-imagem.png" }}" alt="Preview" class="rounded-circle" style="width: 150px; height: 150px;">
                             <label for="imageInput" style="cursor: pointer">
                                 <i class="fas fa-camera"></i> Alterar Imagem
                             </label>
@@ -40,14 +45,27 @@
                             {{ $product->description }}
                         </textarea>
                     </div>
-                    <select name="category_id" class="form-control">
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
-                        @endforeach
-                    </select>
+                    <div class="form-group">
+                        <label for="price">Categoria</label>
+                        <select name="category_id" class="form-control">
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    
                     <div class="form-group">
                         <label for="price">Preço</label>
                         <input type="text" name="price" id="price" class="form-control money" placeholder="Preço do produto" value="{{ $product->price }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Site/Sistema</label>
+                        <select name="sistem" class="form-control">
+                      
+                                <option value="1" {{ $product->sistem == 1 ? 'selected' : '' }}>Sistema</option>
+                                <option value="0" {{ $product->sistem == 0 ? 'selected' : '' }}>Site</option>
+                        
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Atualizar</button>
                 </div>

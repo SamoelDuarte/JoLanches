@@ -13,6 +13,8 @@ class Product extends Model
         'description' ,
         'category_id',
         'price',
+        'sistem',
+        'sistema_display',
         'imageInput', 
 
     ];
@@ -21,5 +23,12 @@ class Product extends Model
 {
     return $this->belongsTo(Categoria::class, 'category_id');
 }
+
+public function getSistemaDisplayAttribute()
+    {
+        // Corrigindo o nome da propriedade para 'sistem'
+        $retorno = $this->sistem ? "Sistema" : "Site";
+        return $retorno;
+    }
 
 }

@@ -2,6 +2,11 @@
 
 
 @section('css')
+<style>
+    .note-editable{
+        height: 90px !important;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -29,29 +34,48 @@
                             <input type="file" id="imageInput" name="imageInput" style="display: none;">
                         </div>
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Descrição</label>
+                        <textarea name="description"  id="description" class="form-control summernote" placeholder="Descrição do produto">
+                            {{ old('description') }}
+                        </textarea>
+                    </div>
+                      
+
+                    
+
                 </div>
                 <div class="col-md-6">
-
                     <div class="form-group">
                         <label for="name">Nome</label>
                         <input type="text" name="name" id="name" class="form-control"
                             placeholder="Nome do produto" value="{{ old('name') }}">
                     </div>
+                 
                     <div class="form-group">
-                        <label for="description">Descrição</label>
-                        <textarea name="description" id="description" class="form-control summernote" placeholder="Descrição do produto">
-                            {{ old('description') }}
-                        </textarea>
+                        <label for="name">Categoria</label>
+                        <select name="category_id" class="form-control">
+                            <option value="">__SELECIONE__</option>
+                            @foreach ($categories as $categoria)
+                                <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <select name="category_id" class="form-control">
-                        @foreach($categories as $categoria)
-                            <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
-                        @endforeach
-                    </select>
+                  
                     <div class="form-group">
                         <label for="price">Preço</label>
                         <input type="text" name="price" id="price" class="form-control money"
                             placeholder="Preço do produto" value="{{ old('price') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Site/Sistema</label>
+                        <select name="sistem" class="form-control">
+
+                            <option value="0">Site</option>
+                            <option value="1">Sistema</option>
+
+                        </select>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Salvar</button>
@@ -69,7 +93,7 @@
             });
 
             $('.summernote').summernote({
-                height: 200,
+                height: 90,
             });
         });
 

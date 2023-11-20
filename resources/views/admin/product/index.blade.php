@@ -40,8 +40,8 @@
                     <th class="rounded-image-column">Imagem</th>
                     <th>Nome</th>
                     <th>Descrição</th>
-                    <th>Categoria</th>
                     <th>Preço</th>
+                    <th>Site/Sistema</th>
                     <th class="element-center">Ações</th>
                 </tr>
             </thead>
@@ -49,12 +49,12 @@
                 @foreach ($products as $product)
                 <tr>
                     <td>
-                        <img src="{{ asset( $product->image) }}" alt="Imagem do Produto" class="rounded-circle rounded-product-image" style="width: 50px; height: 50px;">
+                        <img src="{{ $product->sistem ? "/assets/images/sem-imagem.png" : asset( $product->image) }}" alt="Imagem do Produto" class="rounded-circle rounded-product-image" style="width: 50px; height: 50px;">
                     </td>
                     <td>{{ $product->name }}</td>
                     <td>{!! $product->description !!}</td>
-                    <td>{!! $product->categoria->name !!}</td>
                     <td>{{ $product->price }}</td>
+                    <td>{{ $product->sistema_display }}</td>
                     <td style="text-align: center;">
                         <a href="{{ route('admin.product.edit',['id' => $product->id]) }}" class="btn btn-primary">Editar</a>
                         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-productid="{{ $product->id }}">Excluir</button>

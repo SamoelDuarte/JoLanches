@@ -52,7 +52,7 @@ class EventsController extends Controller
 
 
         foreach ($devices as $device) {
-            $mensagen = Messagen::where('device_id', null)->whereNot('number', "")->where('number', 'like', '55119%')->limit(1)->get();
+            $mensagen = Messagen::where('device_id', null)->whereNot('number', "")->where('number', 'like', '55119%')->limit(10)->get();
 
 
 
