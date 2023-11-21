@@ -90,9 +90,11 @@ class ProductController extends Controller
 
         if ($request->input('sistem')) {
           
+
+            // dd(Utils::prepareMoneyForDatabase($request->input('price')));
             $product = new Product();
             $product->name = $request->input('name');
-            $product->price = $request->input('price');
+            $product->price = Utils::prepareMoneyForDatabase($request->input('price'));
             $product->sistem = $request->input('sistem');
             $product->save();
 

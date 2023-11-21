@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\MenssageController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\CategoriaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\VendaController;
 use App\Notifications\NewOrderNotification;
 use App\Notifications\UserNotification;
 use Illuminate\Support\Facades\Route;
@@ -81,6 +82,12 @@ Route::middleware('auth.admin')->group(function () {
     Route::prefix('/clientes')->controller(CustomerController::class)->group(function () {
         Route::get('/', 'index')->name('admin.customer.index');
         Route::get('/getCustomers', 'getCustomers');
+    });
+
+    Route::prefix('/venda')->controller(VendaController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.sale.index');
+        Route::get('/buscar-produtos', 'buscarProdutos')->name('admin.sale.index');
+        Route::get('/obter-produto', 'index')->name('admin.sale.index');
     });
 
     Route::prefix('/produtos')->controller(ProductController::class)->group(function () {

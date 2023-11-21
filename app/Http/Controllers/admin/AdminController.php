@@ -49,6 +49,6 @@ class AdminController extends Controller
             'userData' => $user
         ]);
 
-        return redirect('/dispositivo');
+        return redirect('/admin');
     }
 }

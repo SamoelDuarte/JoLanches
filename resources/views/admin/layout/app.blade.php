@@ -92,6 +92,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route('admin.sale.index') }}" class="nav-link">
+                    <i class="far fa-images"></i>
+                    <span>Venda</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route('admin.order.index') }}" class="nav-link">
                     <i class="fas fa-users"></i>
                     <span>Pedidos</span>
@@ -349,7 +355,7 @@
 
 
     @yield('scripts')
-    <script>
+    {{-- <script>
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
@@ -375,48 +381,10 @@
                 som.play();
         });
 
-        verificarCondicao();
-        navigator.mediaDevices.getUserMedia({
-                audio: true
-            })
-            .then(function(stream) {
-                // O usuário concedeu permissão para o uso do microfone
-                // Agora você pode usar o stream de áudio.
-            })
-            .catch(function(error) {
-                // O usuário negou a permissão ou ocorreu um erro.
-            });
-        var som = new Howl({
-            src: ['/audioTelefone.mp3']
-        });
+        
 
-
-        function verificarCondicao() {
-            $.ajax({
-                url: '/admin/chat/getAtendimentoPedente',
-                method: 'GET',
-                success: function(response) {
-
-                    var audio = document.getElementById('myAudio');
-
-                    if (response > '0') {
-
-                        som.play();
-                        document.querySelector('.notification-count').textContent = response;
-
-                    } else {
-                        som.pause();
-                        document.querySelector('.notification-count').textContent = response;
-
-
-                    }
-                }
-            });
-        }
-
-        // Executar a função de verificação a cada 5 segundos.
-        setInterval(verificarCondicao, 5000);
-    </script>
+     
+    </script> --}}
     @if (session('success'))
         <script>
             const Toast = Swal.mixin({
