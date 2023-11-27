@@ -10,12 +10,11 @@ class RemoveOldPriceColumnAndRenameNewColumnInProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            
-// Remover a coluna 'price'
-$table->dropColumn('price');
+
+            // Remover a coluna 'price'
+            $table->dropColumn('price');
             // Renom // Renomear a coluna 'new_price' para 'price' usando consulta bruta
-        DB::statement('ALTER TABLE products CHANGE new_price price DECIMAL(10, 2)');
-            
+            // DB::statement('ALTER TABLE products CHANGE new_price price DECIMAL(10, 2)');
         });
     }
 
@@ -26,4 +25,3 @@ $table->dropColumn('price');
         });
     }
 }
-

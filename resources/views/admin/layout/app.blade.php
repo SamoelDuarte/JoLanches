@@ -31,6 +31,8 @@
     <link href="{{ asset('/assets/admin/css/styles.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/admin/css/edit.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     @yield('css')
 
@@ -86,17 +88,28 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#sale"
+                    aria-expanded="true" aria-controls="sale">
+                    <i class="fas fa-mail-bulk"></i>
+                    <span>Sistema</span>
+                </a>
+
+                <div id="sale" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('admin.sale.sale') }}">Venda</a>
+                        <a class="collapse-item" href="{{ route('admin.sale.index') }}">Extrato</a>
+                    </div>
+                </div>
+
+            </li>
+
+            <li class="nav-item">
                 <a href="{{ route('admin.device.index') }}" class="nav-link">
                     <i class="far fa-images"></i>
                     <span>Dispositivos</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('admin.sale.index') }}" class="nav-link">
-                    <i class="far fa-images"></i>
-                    <span>Venda</span>
-                </a>
-            </li>
+           
             <li class="nav-item">
                 <a href="{{ route('admin.order.index') }}" class="nav-link">
                     <i class="fas fa-users"></i>
@@ -301,7 +314,7 @@
             </div>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
+            {{-- <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -313,7 +326,7 @@
                 </div>
 
             </footer>
-            <!-- End of Footer -->
+            <!-- End of Footer --> --}}
 
         </div>
         <!-- End of Content Wrapper -->
@@ -339,6 +352,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/i18n/pt-BR.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.3.0/js/bootstrap-colorpicker.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
@@ -348,7 +362,7 @@
     <script src="{{ asset('/assets/admin/js/main.js') }}"></script>
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 
-    @vite(['resources/js/app.js'])
+    {{-- @vite(['resources/js/app.js']) --}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 
