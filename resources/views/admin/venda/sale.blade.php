@@ -331,14 +331,14 @@
             // Atualiza o valor total global removendo o valor da forma de pagamento
             // Atualiza o valor total global removendo o valor da forma de pagamento
 
-            alert('valor forma'+valorTotal);
+          
             valorTotal -= valorFormaPagamento;
 
             // alert('Valor aki'+valorTotal);
 
             // Verifica se o valorTotal é NaN ou vazio
             if (isNaN(valorTotal) || valorTotal === "") {
-                alert('entrou aki');
+           
                 valorTotal = 0.00;
             }
 

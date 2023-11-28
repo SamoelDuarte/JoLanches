@@ -8,8 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Painel Admin - @yield('title')</title>
+   
+      
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
@@ -32,7 +33,7 @@
     <link href="{{ asset('/assets/admin/css/edit.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 
     @yield('css')
 
@@ -98,6 +99,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('admin.sale.sale') }}">Venda</a>
                         <a class="collapse-item" href="{{ route('admin.sale.index') }}">Extrato</a>
+                        <a class="collapse-item" href="{{ route('admin.sangria.index') }}">Sangria</a>
                     </div>
                 </div>
 
@@ -356,16 +358,20 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('/assets/admin/js/scripts.min.js') }}"></script>
     <script src="{{ asset('/assets/admin/js/main.js') }}"></script>
+    <script src="{{ asset('/assets/utils.js') }}"></script>
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 
     {{-- @vite(['resources/js/app.js']) --}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <!-- Adicione o script para configurar o datepicker em português -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
 
 
     @yield('scripts')

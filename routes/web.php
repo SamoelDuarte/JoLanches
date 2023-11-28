@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\CategoriaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\VendaController;
+use App\Http\Controllers\SangriaController;
 use App\Notifications\NewOrderNotification;
 use App\Notifications\UserNotification;
 use Illuminate\Support\Facades\Route;
@@ -58,7 +59,11 @@ Route::middleware('auth.admin')->group(function () {
 
     Route::prefix('/admin')->controller(AdminHomeController::class)->group(function () {
         Route::post('/dash', 'index')->name('admin.dashboard.index');
+        Route::get('/getDash', 'dash')->name('admin.dashboard.dash');
     });
+
+  
+
     Route::prefix('/dispositivo')->controller(DeviceController::class)->group(function () {
         Route::get('/', 'index')->name('admin.device.index');
         Route::get('/novo', 'create')->name('admin.device.create');
@@ -111,6 +116,14 @@ Route::middleware('auth.admin')->group(function () {
         Route::delete('/{categoria}', 'destroy')->name('admin.categorie.destroy');
     });
 
+
+    Route::prefix('/sangria')->controller(SangriaController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.sangria.index');
+        Route::post('/store', 'store')->name('admin.sangria.store');
+        Route::get('/detalhes/{id}', 'detalhes')->name('admin.sangria.detalhes');
+        Route::post('/editar', 'update')->name('admin.sangria.update');
+        Route::delete('/deletar/{id}', 'deletar')->name('admin.sangria.delete');
+    });
 
 
     Route::prefix('/chat-bot')->controller(ChatBotController::class)->group(function () {
