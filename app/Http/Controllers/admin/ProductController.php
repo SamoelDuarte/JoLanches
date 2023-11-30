@@ -44,6 +44,8 @@ class ProductController extends Controller
             'price' => 'required',
         ]);
 
+        $data['price'] = Utils::prepareMoneyForDatabase($data['price']);
+
         if($request->input('sistem')){
 
 
