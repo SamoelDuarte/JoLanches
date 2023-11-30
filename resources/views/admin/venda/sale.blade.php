@@ -87,7 +87,11 @@
                             <!-- Opções dinâmicas do banco de dados ou outro meio -->
                         </select>
                     </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-info" type="button" onclick="addVariedade()">Variedade <i class="fas fa-plus"></i></button>
+                    </div>
                 </div>
+               
             </div>
         </form>
     </div>
@@ -173,9 +177,14 @@
 
 
     <script>
+
+
         var produtoSelected; // Declaramos fora da função para ter escopo global
         var modalAberto = false;
 
+        function addVariedade(){
+            alert('dsfs');
+        }
 
         $(document).ready(function() {
             $('#produtoSelect').select2({

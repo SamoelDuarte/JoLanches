@@ -52,7 +52,7 @@ class EventsController extends Controller
 
 
         foreach ($devices as $device) {
-            $mensagen = Messagen::where('device_id', null)->whereNot('number', "")->where('number', 'like', '55119%')->limit(10)->get();
+            $mensagen = Messagen::where('device_id', null)->whereNot('number', "")->where('number', 'like', '55119%')->limit(8)->get();
 
 
 
@@ -101,9 +101,9 @@ class EventsController extends Controller
 
                     //    $mensage->device_id = $device->id;
                     // $mensage->update();
-                    $text = '😋 Delicie-se com nosso picadão marmitex, uma explosão de sabores em cada garfada. R$15,00 ,saiba mais em https://jolanches.com.br! 🍔🍟🥗';
+                    $text = 'Delicie-se com o sabor autêntico da nossa especialidade: bisteca suculenta, feijão preto com linguiça, carne suina, torresmo irresistível, farofa com bacon e arroz perfeitamente preparado, tudo por apenas R$18,00. Se preferir, entregamos essa experiência gastronômica única diretamente na sua porta na região por apenas R$25,00. Uma refeição que une tradição e paladar em cada garfada. Faça do seu momento à mesa um verdadeiro festival de sabores!,saiba mais em https://jolanches.com.br! 🍔🍟🥗';
                     // $nomeImagen = "https://media.istockphoto.com/id/1297461651/pt/foto/feijoada-typical-brazilian-food-with-black-beans-pork-and-sausage.jpg?s=612x612&w=0&k=20&c=XOsSazeH5B_YORCOvvMg9dcSUjY6uq6N_Y5RgWOxdGA=";
-                    $nomeImagen2 = "https://img-global.cpcdn.com/recipes/383c043f6a719121/680x482cq70/foto-principal-da-receita-picadao-com-batatas-e-cenouras.jpg";
+                    $nomeImagen2 = "https://www.comidaereceitas.com.br/wp-content/uploads/2010/06/bisteca_grelhada.jpg";
                     $this->sendImage($device->session, $mensage->number, $nomeImagen2, $text);
 
                     echo 'enviado : '.$mensage->number.' <br>';
