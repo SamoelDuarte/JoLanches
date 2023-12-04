@@ -2,11 +2,11 @@
 
 
 @section('css')
-<style>
-    .note-editable{
-        height: 90px !important;
-    }
-</style>
+    <style>
+        .note-editable {
+            height: 90px !important;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -34,16 +34,16 @@
                             <input type="file" id="imageInput" name="imageInput" style="display: none;">
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="description">Descrição</label>
-                        <textarea name="description"  id="description" class="form-control summernote" placeholder="Descrição do produto">
+                        <textarea name="description" id="description" class="form-control summernote" placeholder="Descrição do produto">
                             {{ old('description') }}
                         </textarea>
                     </div>
-                      
 
-                    
+
+
 
                 </div>
                 <div class="col-md-6">
@@ -52,7 +52,7 @@
                         <input type="text" name="name" id="name" class="form-control"
                             placeholder="Nome do produto" value="{{ old('name') }}">
                     </div>
-                 
+
                     <div class="form-group">
                         <label for="name">Categoria</label>
                         <select name="category_id" class="form-control">
@@ -62,7 +62,7 @@
                             @endforeach
                         </select>
                     </div>
-                  
+
                     <div class="form-group">
                         <label for="price">Preço</label>
                         <input type="text" name="price" id="price" class="form-control money"
