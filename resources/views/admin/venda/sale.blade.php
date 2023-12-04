@@ -88,14 +88,12 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-info" type="button" onclick="addVariedade()">Variedade <i
-                                class="fas fa-plus"></i></button>
-                        <button class="btn btn-info" type="button" onclick="addProduto()">Novo Produto <i
-                                class="fas fa-plus"></i></button>
+                        <button class="btn btn-info" type="button" onclick="addVariedade()">Variedade <i class="fas fa-plus"></i></button>
+                        <button class="btn btn-info" type="button" onclick="addProduto()">Novo Produto <i class="fas fa-plus"></i></button>
                     </div>
-
+                   
                 </div>
-
+               
             </div>
         </form>
     </div>
@@ -137,52 +135,6 @@
         </div>
     </div>
 
-    <!-- Modal variedade -->
-    <div class="modal modalVariedade fade" id="modalVariedade" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Varidedade</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="name">Nome</label>
-                                <input type="text" id="name-variedade" class="form-control"
-                                    placeholder="Nome do produto">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="price">Preço</label>
-                                <input type="text" id="price-variedade" class="form-control money"
-                                    placeholder="Preço do produto">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="price">Quantidade</label>
-                                <input type="number" id="quantity-variedade" class="form-control money"
-                                    placeholder="Preço do produto">
-                            </div>
-
-
-                            <!-- Removido o botão de submit -->
-                            <!-- Adicione um ID para facilitar a seleção com jQuery -->
-                            <button type="button" onclick="addVariedadeTabela()"
-                                class="btn btn-primary">Adicionar</button>
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
     <!-- Modal -->
     <div class="modal modalProduto fade" id="modalProduto" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -195,8 +147,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data"
-                        class="ajax-form">
+                    <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -205,7 +156,7 @@
                                     <input type="text" name="name" id="name" class="form-control"
                                         placeholder="Nome do produto" value="{{ old('name') }}">
                                 </div>
-
+                             
                                 <div class="form-group">
                                     <label for="price">Preço</label>
                                     <input type="text" name="price" id="price" class="form-control money"
@@ -213,26 +164,31 @@
                                 </div>
                                 <div class="form-group" hidden>
                                     <label for="name">Site/Sistema</label>
-                                    <select name="sistem" class="form-control">
+                                    <select name="sistem" class="form-control" >
+            
                                         <option value="1" selected>Sistema</option>
+            
                                     </select>
                                 </div>
-
-                                <!-- Removido o botão de submit -->
-                                <!-- Adicione um ID para facilitar a seleção com jQuery -->
+            
                                 <button type="submit" class="btn btn-primary">Salvar</button>
-
+            
                             </div>
                     </form>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary" onclick="adicionarFormadePagamento()">Adicionar</button>
                 </div>
             </div>
         </div>
     </div>
 
-
     <!-- Modal -->
-    <div class="modal modalFormaPagamento fade" id="modalFormaPagamento" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal modalFormaPagamento fade" id="modalFormaPagamento" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -245,8 +201,7 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="quantidadeInput">Valor:</label>
-                            <input type="text" class="form-control money" id="valorFormPagamentos"
-                                placeholder="Valor">
+                            <input type="text" class="form-control money" id="valorFormPagamentos" placeholder="Valor">
                         </div>
                         <div class="form-group">
                             <label for="quantidadeInput">Forma de Pagamento</label>
@@ -263,8 +218,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary"
-                        onclick="adicionarFormadePagamento()">Adicionar</button>
+                    <button type="submit" class="btn btn-primary" onclick="adicionarFormadePagamento()">Adicionar</button>
                 </div>
             </div>
         </div>
@@ -276,108 +230,16 @@
 
 
     <script>
-        $(document).ready(function() {
-            $('.ajax-form').submit(function(e) {
-                e.preventDefault();
 
-                // Realiza uma solicitação Ajax
-                $.ajax({
-                    type: 'POST',
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        // Lida com a resposta do servidor aqui, se necessário
-                        console.log('Sucesso!', data);
 
-                        // Fecha o modal
-                        $('#modalProduto').modal('hide');
-                    },
-                    error: function(error) {
-                        // Lida com erros aqui, se necessário
-                        console.log('Erro!', error);
-                    }
-                });
-            });
-        });
         var produtoSelected; // Declaramos fora da função para ter escopo global
         var modalAberto = false;
 
-        function addVariedade() {
-            $('#modalVariedade').modal('show');
+        function addVariedade(){
+            alert('dsfs');
         }
 
-        function addVariedadeTabela() {
-            var nameVariedade = $('#name-variedade').val();
-            var priceVariedade = $('#price-variedade').val();
-            var quantityVariedade = $('#quantity-variedade').val();
-            // Validação se os campos estão preenchidos
-            if (!nameVariedade || !priceVariedade || !quantityVariedade) {
-                // Se um dos campos não estiver preenchido, exiba uma mensagem de erro ou tome a ação apropriada
-                alert('Todos os campos devem ser preenchidos.');
-                return;
-            }
-
-            var tabela = $('#tabelaVenda tbody');
-
-            var precoUnitario = parseFloat(priceVariedade);
-            var totalLinha = quantityVariedade * precoUnitario;
-
-            // Adiciona o total da linha à lista
-            totais.push(parseFloat(totalLinha));
-
-            // Atualiza o valor total global
-            valorTotal = totais.reduce((total, valor) => total + valor, 0);
-
-
-
-            // Cria a nova linha
-            var novaLinha = $('<tr>');
-            novaLinha.append($('<td>').text(nameVariedade));
-            novaLinha.append($('<td>').text(quantityVariedade));
-            novaLinha.append($('<td>').text(formatarPreco(precoUnitario)));
-            novaLinha.append($('<td>').text(formatarPreco(totalLinha)));
-
-            // Adiciona um input oculto com id "produto_quantidade" na nova linha
-            novaLinha.append($('<input>').attr('type', 'hidden').attr('id', 'produto_id').attr('name', 'produto_id[]')
-                .val(1));
-            novaLinha.append($('<input>').attr('type', 'hidden').attr('id', 'produto_quantidade').attr('name',
-                'produto_quantidade[]').val(quantityVariedade));
-
-
-            // Adiciona a coluna de ação (botão Delete)
-            var colunaAcao = $('<td>');
-            var botaoDelete = $('<button>').text('Delete').addClass('btn btn-danger btn-sm');
-            botaoDelete.on('click', function() {
-                // Obtém o total associado à linha antes de remover a linha
-                var index = tabela.find('tr').index(novaLinha) - 1;
-                var totalRemover = totais[index];
-
-                // Remove a linha da tabela
-                removerLinhaTabela(novaLinha);
-
-                // Atualiza o valor total global removendo o total associado à linha
-                valorTotal -= totalRemover;
-                $('#valorTotal').text(calcularTotalVenda());
-
-
-                // Remove o total associado à linha da lista
-                totais.splice(index, 1);
-            });
-            colunaAcao.append(botaoDelete);
-            novaLinha.append(colunaAcao);
-
-            tabela.append(novaLinha);
-
-            $('#valorTotal').text(calcularTotalVenda());
-
-            $('.modalVariedade').modal('hide');
-            $('#name-variedade').val('');
-            $('#price-variedade').val('');
-            $('#quantity-variedade').val('');
-
-        }
-
-        function addProduto() {
+        function addProduto(){
             $('#modalProduto').modal('show');
         }
 
@@ -448,12 +310,21 @@
             var precoUnitario = parseFloat(produtoSelected.price);
             var totalLinha = quantidade * precoUnitario;
 
+
+          
             // Adiciona o total da linha à lista
             totais.push(parseFloat(totalLinha));
+
+            // console.log('totais' + totais);
 
             // Atualiza o valor total global
             valorTotal = totais.reduce((total, valor) => total + valor, 0);
 
+            // alert("Valor Total"+valorTotal);
+
+          
+
+          
 
             // Cria a nova linha
             var novaLinha = $('<tr>');
@@ -467,7 +338,7 @@
                 produtoSelected.id));
             novaLinha.append($('<input>').attr('type', 'hidden').attr('id', 'produto_quantidade').attr('name',
                 'produto_quantidade[]').val(quantidade));
-
+            
 
             // Adiciona a coluna de ação (botão Delete)
             var colunaAcao = $('<td>');
@@ -483,7 +354,7 @@
                 // Atualiza o valor total global removendo o total associado à linha
                 valorTotal -= totalRemover;
                 $('#valorTotal').text(calcularTotalVenda());
-
+              
 
                 // Remove o total associado à linha da lista
                 totais.splice(index, 1);
@@ -492,8 +363,8 @@
             novaLinha.append(colunaAcao);
 
             tabela.append(novaLinha);
-
-            $('#valorTotal').text(calcularTotalVenda());
+          
+                $('#valorTotal').text(calcularTotalVenda());
         }
 
         function removerLinhaTabela(linha) {
@@ -512,7 +383,7 @@
             var formaPagamentoId = $("#form_pagamento").val();
             var formaPagamentoNome = $("#form_pagamento option:selected").text();
 
-
+         
 
             // Verifica se o valor da forma de pagamento é maior que o valor total
 
@@ -526,14 +397,14 @@
             // Atualiza o valor total global removendo o valor da forma de pagamento
             // Atualiza o valor total global removendo o valor da forma de pagamento
 
-
+          
             valorTotal -= valorFormaPagamento;
 
             // alert('Valor aki'+valorTotal);
 
             // Verifica se o valorTotal é NaN ou vazio
             if (isNaN(valorTotal) || valorTotal === "") {
-
+           
                 valorTotal = 0.00;
             }
 
@@ -552,8 +423,7 @@
                     `<button type='button' class='btn btn-danger' onclick='excluirFormadePagamento(this)'>Excluir</button>`
                 ))
                 .append($("<input>").attr('type', 'hidden').attr('name', 'form_pagamento_id[]').val(formaPagamentoId))
-                .append($("<input>").attr('type', 'hidden').attr('name', 'form_pagamento_valor[]').val(formatarPreco(
-                    valor)));;
+                .append($("<input>").attr('type', 'hidden').attr('name', 'form_pagamento_valor[]').val(formatarPreco(valor)));;
 
 
 
@@ -572,7 +442,7 @@
 
         function formatarPreco(preco) {
             preco = parseFloat(preco);
-            return preco.toFixed(2);
+            return  preco.toFixed(2);
         }
 
         // Função para verificar se a tecla pressionada é "Enter"
@@ -639,7 +509,7 @@
 
             if (valorTotal === 0) {
                 //  alert('chamasubmit valor '+valorTotal);
-                $('#vendaForm').submit();
+                 $('#vendaForm').submit();
             } else {
                 // Abre o modal
                 $('#modalFormaPagamento').modal('show');
