@@ -100,7 +100,8 @@
                         <a class="collapse-item" href="{{ route('admin.sale.sale') }}">Venda</a>
                         <a class="collapse-item" href="{{ route('admin.sale.index') }}">Extrato</a>
                         <a class="collapse-item" href="{{ route('admin.sangria.index') }}">Sangria</a>
-                    </div>
+                        <a class="collapse-item" href="{{ route('admin.shopping-list.index') }}">Lista Compras</a>
+                    </div>  
                 </div>
 
             </li>

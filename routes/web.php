@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\HomeController as AdminHomeController;
 use App\Http\Controllers\admin\MenssageController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\CategoriaController;
+use App\Http\Controllers\admin\ShoppingListController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\VendaController;
 use App\Http\Controllers\SangriaController;
@@ -41,7 +42,6 @@ Route::prefix('/admin')->controller(AdminController::class)->group(function () {
     Route::prefix('/chat')->controller(ChatBotController::class)->group(function () {
         Route::get('/getAtendimentoPedente', 'getAtendimentoPedente');
     });
-
 });
 
 Route::prefix('/')->controller(HomeController::class)->group(function () {
@@ -62,7 +62,7 @@ Route::middleware('auth.admin')->group(function () {
         Route::get('/getDash', 'dash')->name('admin.dashboard.dash');
     });
 
-  
+
 
     Route::prefix('/dispositivo')->controller(DeviceController::class)->group(function () {
         Route::get('/', 'index')->name('admin.device.index');
@@ -88,6 +88,14 @@ Route::middleware('auth.admin')->group(function () {
         Route::get('/', 'index')->name('admin.customer.index');
         Route::get('/getCustomers', 'getCustomers');
     });
+
+    Route::prefix('/list-compras')->controller(ShoppingListController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.shopping-list.index');
+        Route::post('/store', 'store')->name('admin.shopping-list.store');
+        Route::get('/getItens', 'getItens')->name('admin.shopping_list.getItens');
+        Route::delete('/destroy', 'destroy')->name('admin.shopping-list.destroy');
+    });
+
 
     Route::prefix('/venda')->controller(VendaController::class)->group(function () {
         Route::get('/sale', 'sale')->name('admin.sale.sale');
@@ -150,15 +158,14 @@ Route::get('teste1', function () {
     $options = array(
         'cluster' => 'mt1',
         'useTLS' => true
-      );
-      $pusher = new Pusher\Pusher(
+    );
+    $pusher = new Pusher\Pusher(
         'e13db91a4625ab794815',
         '78f9df6d9a0dc2f85a26',
         '1693149',
         $options
-      );
-    
-      $data['message'] = 'hello world';
-      $pusher->trigger('my-channel', 'my-event', $data);
-    
+    );
+
+    $data['message'] = 'hello world';
+    $pusher->trigger('my-channel', 'my-event', $data);
 });

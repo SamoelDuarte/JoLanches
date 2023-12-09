@@ -7,16 +7,16 @@
     <style>
         .lista-caixa {
             display: flex;
-            flex-direction: column;
-            margin-top: 20px;
-            position: absolute;
-            right: 0px;
-            bottom: 0px;
+    flex-direction: column;
+    margin-top: 40px;
+    position: absolute;
+    right: 19px;
+    bottom: 31px;
         }
 
         .item {
             text-align: center;
-            font-size: 40px;
+            font-size: 60px;
         }
 
         .titulo {
@@ -80,17 +80,17 @@
 
                 <!-- Segunda coluna -->
                 <div class="col-md-6 h-100 d-flex flex-column">
-
+                    <div class="col-md-6">
+                        <button class="btn btn-info" type="button" onclick="addVariedade()">Variedade <i class="fas fa-plus"></i></button>
+                        <button class="btn btn-info" type="button" onclick="addProduto()">Novo Produto <i class="fas fa-plus"></i></button>
+                    </div>
                     <h4>Adicionar Produto</h4>
                     <div class="form-group">
                         <select class="form-control" id="produtoSelect">
                             <!-- Opções dinâmicas do banco de dados ou outro meio -->
                         </select>
                     </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-info" type="button" onclick="addVariedade()">Variedade <i class="fas fa-plus"></i></button>
-                        <button class="btn btn-info" type="button" onclick="addProduto()">Novo Produto <i class="fas fa-plus"></i></button>
-                    </div>
+                 
                    
                 </div>
                
