@@ -133,6 +133,35 @@ class ProductController extends Controller
 
        
     }
+
+    public function storeSistem(Request $request)
+    {
+
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+        ]);
+
+
+
+
+      
+          
+
+            // dd(Utils::prepareMoneyForDatabase($request->input('price')));
+            $product = new Product();
+            $product->name = $request->input('name');
+            $product->price = Utils::prepareMoneyForDatabase($request->input('price'));
+            $product->sistem = $request->input('sistem');
+            $product->save();
+
+    
+
+            return response()->json(['success' => 'Salvo com Sucesso']);
+       
+
+       
+    }
     public function destroy($id)
     {
         $product = Product::find($id);

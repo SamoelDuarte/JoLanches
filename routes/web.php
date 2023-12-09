@@ -109,6 +109,7 @@ Route::middleware('auth.admin')->group(function () {
     Route::prefix('/produtos')->controller(ProductController::class)->group(function () {
         Route::get('/', 'index')->name('admin.product.index');
         Route::post('/store', 'store')->name('admin.product.store');
+        Route::post('/storeSistem', 'storeSistem')->name('admin.product.storeSistem');
         Route::get('/novo', 'create')->name('admin.product.create');
         Route::delete('/destroy/{product}', 'destroy')->name('admin.product.destroy');
         Route::put('/destroy/{product}', 'update')->name('admin.product.update');

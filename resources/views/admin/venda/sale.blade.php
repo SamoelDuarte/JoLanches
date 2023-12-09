@@ -7,11 +7,11 @@
     <style>
         .lista-caixa {
             display: flex;
-    flex-direction: column;
-    margin-top: 40px;
-    position: absolute;
-    right: 19px;
-    bottom: 31px;
+            flex-direction: column;
+            margin-top: 40px;
+            position: absolute;
+            right: 19px;
+            bottom: 31px;
         }
 
         .item {
@@ -81,8 +81,10 @@
                 <!-- Segunda coluna -->
                 <div class="col-md-6 h-100 d-flex flex-column">
                     <div class="col-md-6">
-                        <button class="btn btn-info" type="button" onclick="addVariedade()">Variedade <i class="fas fa-plus"></i></button>
-                        <button class="btn btn-info" type="button" onclick="addProduto()">Novo Produto <i class="fas fa-plus"></i></button>
+                        <button class="btn btn-info" type="button" onclick="addVariedade()">Variedade <i
+                                class="fas fa-plus"></i></button>
+                        <button class="btn btn-info" type="button" onclick="addProduto()">Novo Produto <i
+                                class="fas fa-plus"></i></button>
                     </div>
                     <h4>Adicionar Produto</h4>
                     <div class="form-group">
@@ -90,10 +92,10 @@
                             <!-- Opções dinâmicas do banco de dados ou outro meio -->
                         </select>
                     </div>
-                 
-                   
+
+
                 </div>
-               
+
             </div>
         </form>
     </div>
@@ -141,14 +143,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Forma de Pagamento</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Novo Produto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
+                    <form id="productForm" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -156,39 +157,34 @@
                                     <input type="text" name="name" id="name" class="form-control"
                                         placeholder="Nome do produto" value="{{ old('name') }}">
                                 </div>
-                             
+
                                 <div class="form-group">
                                     <label for="price">Preço</label>
                                     <input type="text" name="price" id="price" class="form-control money"
                                         placeholder="Preço do produto" value="{{ old('price') }}">
                                 </div>
+
                                 <div class="form-group" hidden>
                                     <label for="name">Site/Sistema</label>
-                                    <select name="sistem" class="form-control" >
-            
+                                    <select name="sistem" class="form-control">
                                         <option value="1" selected>Sistema</option>
-            
                                     </select>
                                 </div>
-            
-                                <button type="submit" class="btn btn-primary">Salvar</button>
-            
                             </div>
+                        </div>
                     </form>
-                    </div>
-
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary" onclick="adicionarFormadePagamento()">Adicionar</button>
+                    <button type="button" onclick="newProduct()" class="btn btn-primary">Salvar</button>
                 </div>
             </div>
+
         </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal modalFormaPagamento fade" id="modalFormaPagamento" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal modalFormaPagamento fade" id="modalFormaPagamento" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -201,7 +197,8 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="quantidadeInput">Valor:</label>
-                            <input type="text" class="form-control money" id="valorFormPagamentos" placeholder="Valor">
+                            <input type="text" class="form-control money" id="valorFormPagamentos"
+                                placeholder="Valor">
                         </div>
                         <div class="form-group">
                             <label for="quantidadeInput">Forma de Pagamento</label>
@@ -218,7 +215,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary" onclick="adicionarFormadePagamento()">Adicionar</button>
+                    <button type="submit" class="btn btn-primary"
+                        onclick="adicionarFormadePagamento()">Adicionar</button>
                 </div>
             </div>
         </div>
@@ -230,16 +228,64 @@
 
 
     <script>
+        function newProduct() {
+            // Coletar dados do formulário
+            var formData = new FormData($('#productForm')[0]);
 
+            // Enviar uma solicitação Ajax
+            $.ajax({
+                url: "{{ route('admin.product.storeSistem') }}",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    console.log(data);
+                    if (data.success) {
+
+                        // Fechar o modal (opcional)
+                        $('#modalProduto').modal('hide');
+
+                        // Limpar o formulário (opcional)
+                        $('#productForm')[0].reset();
+
+                        // Exibir uma mensagem de sucesso
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 5000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal
+                                    .stopTimer)
+                                toast.addEventListener('mouseleave', Swal
+                                    .resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'success',
+                            title: "Salvo Com Sucesso",
+                        })
+
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Exibir mensagem de erro se houver problemas
+                    alert('Erro ao salvar o produto. Por favor, tente novamente.');
+                }
+            });
+        }
 
         var produtoSelected; // Declaramos fora da função para ter escopo global
         var modalAberto = false;
 
-        function addVariedade(){
+        function addVariedade() {
             alert('dsfs');
         }
 
-        function addProduto(){
+        function addProduto() {
             $('#modalProduto').modal('show');
         }
 
@@ -311,7 +357,7 @@
             var totalLinha = quantidade * precoUnitario;
 
 
-          
+
             // Adiciona o total da linha à lista
             totais.push(parseFloat(totalLinha));
 
@@ -322,9 +368,9 @@
 
             // alert("Valor Total"+valorTotal);
 
-          
 
-          
+
+
 
             // Cria a nova linha
             var novaLinha = $('<tr>');
@@ -338,7 +384,7 @@
                 produtoSelected.id));
             novaLinha.append($('<input>').attr('type', 'hidden').attr('id', 'produto_quantidade').attr('name',
                 'produto_quantidade[]').val(quantidade));
-            
+
 
             // Adiciona a coluna de ação (botão Delete)
             var colunaAcao = $('<td>');
@@ -354,7 +400,7 @@
                 // Atualiza o valor total global removendo o total associado à linha
                 valorTotal -= totalRemover;
                 $('#valorTotal').text(calcularTotalVenda());
-              
+
 
                 // Remove o total associado à linha da lista
                 totais.splice(index, 1);
@@ -363,8 +409,8 @@
             novaLinha.append(colunaAcao);
 
             tabela.append(novaLinha);
-          
-                $('#valorTotal').text(calcularTotalVenda());
+
+            $('#valorTotal').text(calcularTotalVenda());
         }
 
         function removerLinhaTabela(linha) {
@@ -383,7 +429,7 @@
             var formaPagamentoId = $("#form_pagamento").val();
             var formaPagamentoNome = $("#form_pagamento option:selected").text();
 
-         
+
 
             // Verifica se o valor da forma de pagamento é maior que o valor total
 
@@ -397,14 +443,14 @@
             // Atualiza o valor total global removendo o valor da forma de pagamento
             // Atualiza o valor total global removendo o valor da forma de pagamento
 
-          
+
             valorTotal -= valorFormaPagamento;
 
             // alert('Valor aki'+valorTotal);
 
             // Verifica se o valorTotal é NaN ou vazio
             if (isNaN(valorTotal) || valorTotal === "") {
-           
+
                 valorTotal = 0.00;
             }
 
@@ -423,7 +469,8 @@
                     `<button type='button' class='btn btn-danger' onclick='excluirFormadePagamento(this)'>Excluir</button>`
                 ))
                 .append($("<input>").attr('type', 'hidden').attr('name', 'form_pagamento_id[]').val(formaPagamentoId))
-                .append($("<input>").attr('type', 'hidden').attr('name', 'form_pagamento_valor[]').val(formatarPreco(valor)));;
+                .append($("<input>").attr('type', 'hidden').attr('name', 'form_pagamento_valor[]').val(formatarPreco(
+                    valor)));;
 
 
 
@@ -442,7 +489,7 @@
 
         function formatarPreco(preco) {
             preco = parseFloat(preco);
-            return  preco.toFixed(2);
+            return preco.toFixed(2);
         }
 
         // Função para verificar se a tecla pressionada é "Enter"
@@ -509,7 +556,7 @@
 
             if (valorTotal === 0) {
                 //  alert('chamasubmit valor '+valorTotal);
-                 $('#vendaForm').submit();
+                $('#vendaForm').submit();
             } else {
                 // Abre o modal
                 $('#modalFormaPagamento').modal('show');
