@@ -22,6 +22,7 @@
         <table id="sangriaTable" class="table table-striped">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Data</th>
                     <th>Valor</th>
                     <th>Descrição</th>
@@ -33,6 +34,7 @@
                 {{-- Exemplo de como iterar sobre sangrias --}}
                 @foreach ($sangrias as $sangria)
                     <tr>
+                        <td>{{ $sangria->id }}</td>
                         <td>{{ $sangria->data }}</td>
                         <td>{{ $sangria->valor }}</td>
                         <td>{{ $sangria->descricao }}</td>
