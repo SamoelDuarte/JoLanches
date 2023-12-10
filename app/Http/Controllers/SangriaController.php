@@ -11,7 +11,8 @@ class SangriaController extends Controller
 {
     public function index()
     {
-        $sangrias = Sangria::all();
+        $sangrias = Sangria::all()->sortByDesc('id');
+
         return view('admin.sangria.index', compact('sangrias'));
     }
 
