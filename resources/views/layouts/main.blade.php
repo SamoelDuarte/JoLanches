@@ -127,7 +127,7 @@
                                 <div class="carousel-inner" role="listbox">
 
                                     <div class="item active">
-                                        <img src="/upload/banner01.png" alt="Chania">
+                                        <img src="{{ asset('/upload/banner01.png') }}" alt="Chania">
                                         <div class="carousel-caption">
                                             <h3>Hamburguers</h3>
                                             <p>Monte Seu Lanche.</p>
@@ -135,7 +135,7 @@
                                     </div>
 
                                     <div class="item">
-                                        <img src="/upload/banner02.png" alt="Chania">
+                                        <img src="{{ asset('/upload/banner02.png') }}" alt="Chania">
                                         <div class="carousel-caption">
                                             <h3>No Frio</h3>
                                             <p>Aquela Sopa!</p>
@@ -143,7 +143,7 @@
                                     </div>
 
                                     <div class="item">
-                                        <img src="/upload/banner03.png" alt="Flower">
+                                        <img src="{{ asset('/upload/banner03.png') }}" alt="Flower">
                                         <div class="carousel-caption">
                                             <h3>Marmitex</h3>
                                             <p>Todo Dia.</p>
@@ -172,7 +172,7 @@
                     <div class="row " data-aos-duration="2200" data-aos="fade-left">
                         <div class="coluna-2">
                             <div class="sombraredondeada">
-                                <img src="upload/icone-2.png">
+                                <img src="{{ asset('upload/icone-2.png') }}">
                             </div>
                         </div>
                     </div>
@@ -184,7 +184,10 @@
                                 <div class="sombra-quadrada">
                                     <label class="txt-pedido txt-mouse" id="txt-mouse">Peça no Ifood</label>
                                 </div>
-                                <div class="txt-pedido mostrar" id="mostrar"><a href="https://www.ifood.com.br/delivery/sao-paulo-sp/jo-lanches-jardim-fujihara/55a59025-9625-43ef-921a-3ddcb1bea1a1" target="_blank"><img src="/assets/images/ifood.png" style="width: 80px; height: 52px;" alt=""></a></div>
+                                <div class="txt-pedido mostrar" id="mostrar"><a
+                                        href="https://www.ifood.com.br/delivery/sao-paulo-sp/jo-lanches-jardim-fujihara/55a59025-9625-43ef-921a-3ddcb1bea1a1"
+                                        target="_blank"><img src="/assets/images/ifood.png"
+                                            style="width: 80px; height: 52px;" alt=""></a></div>
                             </div>
 
 
@@ -195,9 +198,9 @@
         </section>
 
         <section id="cardapio">
-         
-                @yield('content')
-       
+
+            @yield('content')
+
         </section>
 
 
@@ -216,7 +219,7 @@
             </div>
             <div class="sombra-quadrada">
                 <div class="row">
-                    <img src="/upload/map.jpeg" class="img-fluid" alt="">
+                    <img src="{{ asset('/upload/map.jpeg') }}" class="img-fluid" alt="">
                 </div>
             </div>
 
@@ -230,8 +233,8 @@
             <div class="row footer-top">
                 <div class="col-md-6 col-lg-7">
 
-                    <img src="/upload/icone-menu.png"
-                        style="    height: 150px;
+                    <img src="{{ asset('/upload/icone-menu.png') }}"
+                        style="height: 150px;
                     width: 150px;
                     margin-top: 15px;
                     margin-left: 15px;"
@@ -253,7 +256,8 @@
                     <div class="mb-3">
                         <div class="me-2 d-flex align-items-center">
                             <i class="fas fa-map-marker-alt fs-4 text-secondary me-2" style="margin-right: 5px;"></i>
-                            <span class="text-white"> R. José Bonifácio Pasquali n°34 Cep 04929-400 <br> <small>São Paulo –
+                            <span class="text-white"> R. José Bonifácio Pasquali n°34 Cep 04929-400 <br> <small>São
+                                    Paulo –
                                     SP</small></span>
                         </div>
                     </div>
@@ -354,8 +358,7 @@
                         </li>
 
                         <li>
-                            <a href="https://www.facebook.com/jolanches" target="_blank"
-                                rel="noopener noreferrer">
+                            <a href="https://www.facebook.com/jolanches" target="_blank" rel="noopener noreferrer">
                                 <span class="fab fa-facebook face"></span>
                             </a>
                         </li>
