@@ -47,19 +47,19 @@
                             <ul>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#"><img class="zoom"
-                                            src="upload/inicio-menu.png"></a>
+                                            src="{{ asset('upload/inicio-menu.png') }}"></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#cardapio"><img class="zoom"
-                                            src="upload/cardapio-menu.png"></a>
+                                            src="{{ asset('upload/cardapio-menu.png') }}"></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#visite"><img class="zoom" style="height: 50px;"
-                                            src="upload/visitenos.png"></a>
+                                            src="{{ asset('upload/visitenos.png') }}"></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#contato"><img class="zoom"
-                                            src="upload/contato-menu.png"></a>
+                                            src="{{ asset('upload/contato-menu.png') }}"></a>
                                 </li>
 
 
