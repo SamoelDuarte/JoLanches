@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('messagens', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('device_id')->constrained()->onDelete('cascade')->nullable();
+            $table->foreignId('device_id')->nullable()->constrained()->onDelete('cascade');
             $table->text('messagem')->nullable();
             $table->text('number')->nullable();
             $table->timestamps();

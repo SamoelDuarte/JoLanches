@@ -12,6 +12,8 @@ use App\Http\Controllers\admin\CategoriaController;
 use App\Http\Controllers\admin\ShoppingListController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\VendaController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SangriaController;
 use App\Notifications\NewOrderNotification;
 use App\Notifications\UserNotification;
