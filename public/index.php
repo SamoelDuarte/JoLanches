@@ -16,9 +16,6 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
-    require $maintenance;
-}
 if (!function_exists('asset')) {
     /**
      * Generate an asset path for the application.
@@ -33,6 +30,11 @@ if (!function_exists('asset')) {
     }
 }
 
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
+
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -45,6 +47,7 @@ if (!function_exists('asset')) {
 */
 
 require __DIR__.'/../vendor/autoload.php';
+
 
 /*
 |--------------------------------------------------------------------------

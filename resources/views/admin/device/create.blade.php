@@ -27,12 +27,11 @@
                     </div>
                 </div>
                 <div class="card qr-code">
-                    
                     <div id="preload">
                         <div class="loader"></div>
                     </div>
                     <img id="qrcode-img" src="{{ $qrcodeImgSrc }}" alt="QR Code" />
-                    <div class="card-footer server_connect " id="footer-qr-code" style="display: none">
+                    <div class="card-footer server_connect" id="footer-qr-code" style="display: none">
                         <div class=" ">
                             {{ __('Conectado  😎 ') }}
                         </div>

@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    
 @endsection
 
 @section('content')
@@ -51,7 +50,7 @@
             </div>
         </div>
 
-       
+
     </section>
 @endsection
 
@@ -60,6 +59,4 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script type="text/javascript" src="{{ asset('/assets/admin/js/dash.js') }}"></script>
-
-    
 @endsection

@@ -42,7 +42,7 @@ function verificarCondicao() {
     var parametro = "valor_do_parametro"; // Substitua "valor_do_parametro" pelo valor real do parâmetro que você deseja passar
 
     $.ajax({
-        url: "/dispositivo/getStatus",
+        url: "/device/getStatus",
         type: "GET",
         data: { sessionId: session }, // Aqui passamos o parâmetro na requisição GET
         success: function (response) {
