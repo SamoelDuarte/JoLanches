@@ -52,6 +52,11 @@
                         <input type="text" name="name" id="name" class="form-control"
                             placeholder="Nome do produto" value="{{ old('name') }}">
                     </div>
+                     <div class="form-group">
+                        <label for="name">Código de Barra</label>
+                        <input type="text" name="cod_barra" id="cod_barra" class="form-control"
+                            placeholder="Codigo de Barra" value="{{ old('cod_barra') }}">
+                    </div>
 
                     <div class="form-group">
                         <label for="name">Categoria</label>

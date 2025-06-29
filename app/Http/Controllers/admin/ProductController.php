@@ -46,10 +46,8 @@ class ProductController extends Controller
 
         $data['price'] = Utils::prepareMoneyForDatabase($data['price']);
 
-        if($request->input('sistem')){
-
-
-        }else{
+        if ($request->input('sistem')) {
+        } else {
             $data = $request->validate([
                 'description' => 'required',
                 'category_id' => 'required',
@@ -66,10 +64,9 @@ class ProductController extends Controller
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
                 $image->move(public_path('assets/images/products'), $imageName);
             }
-
         }
 
-       
+
 
 
         $product->update($data);
@@ -91,7 +88,7 @@ class ProductController extends Controller
 
 
         if ($request->input('sistem')) {
-          
+
 
             // dd(Utils::prepareMoneyForDatabase($request->input('price')));
             $product = new Product();
@@ -99,19 +96,18 @@ class ProductController extends Controller
             $product->price = Utils::prepareMoneyForDatabase($request->input('price'));
             $product->sistem = $request->input('sistem');
             $product->save();
-
         } else {
             $request->validate([
                 'description' => 'required',
-                'category_id' => 'required',
-                'imageInput' => 'image|mimes:jpeg,png,jpg,gif|max:2048|required', // Verifique os requisitos da imagem
+                // 'category_id' => 'required',
+                // 'imageInput' => 'image|mimes:jpeg,png,jpg,gif|max:2048|required', // Verifique os requisitos da imagem
             ]);
 
             $image = $request->file('imageInput');
             if ($image) {
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
                 $image->move(public_path('assets/images/products'), $imageName);
-    
+
                 $product = new Product();
                 $product->name = $request->input('name');
                 $product->description = $request->input('description');
@@ -119,19 +115,20 @@ class ProductController extends Controller
                 $product->price = $request->input('price');
                 $product->image = "/assets/images/products/" . $imageName;
                 $product->save();
-    
-              
             } else {
-                return redirect()->back()->with('error', 'Falha ao fazer upload da imagem.');
+                // return redirect()->back()->with('error', 'Falha ao fazer upload da imagem.');
             }
-
-            
+            $product = new Product();
+            $product->name = $request->input('name');
+            $product->description = $request->input('description');
+            $product->cod_barra = $request->input('cod_barra');
+            $product->category_id = $request->input('category_id');
+            $product->price = str_replace(',', '.', $request->input('price'));
+            // $product->image = "/assets/images/products/" . $imageName;
+            $product->save();
         }
 
         return redirect()->route('admin.product.index')->with('success', 'Produto adicionado com sucesso.');
-       
-
-       
     }
 
     public function storeSistem(Request $request)
@@ -145,22 +142,19 @@ class ProductController extends Controller
 
 
 
-      
-          
 
-            // dd(Utils::prepareMoneyForDatabase($request->input('price')));
-            $product = new Product();
-            $product->name = $request->input('name');
-            $product->price = Utils::prepareMoneyForDatabase($request->input('price'));
-            $product->sistem = $request->input('sistem');
-            $product->save();
 
-    
 
-            return response()->json(['success' => 'Salvo com Sucesso']);
-       
+        // dd(Utils::prepareMoneyForDatabase($request->input('price')));
+        $product = new Product();
+        $product->name = $request->input('name');
+        $product->price = Utils::prepareMoneyForDatabase($request->input('price'));
+        $product->sistem = $request->input('sistem');
+        $product->save();
 
-       
+
+
+        return response()->json(['success' => 'Salvo com Sucesso']);
     }
     public function destroy($id)
     {
