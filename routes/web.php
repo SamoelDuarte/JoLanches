@@ -12,13 +12,17 @@ use App\Http\Controllers\admin\CategoriaController;
 use App\Http\Controllers\admin\ShoppingListController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\VendaController;
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SangriaController;
 use App\Notifications\NewOrderNotification;
 use App\Notifications\UserNotification;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GitWebhookController;
 
+
+Route::post('/git-webhook', [GitWebhookController::class, 'handle']);
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +33,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::prefix('/api')->controller(ApiController::class)->group(function () {
+    Route::post('/get-produto', 'getProduto')->name('admin.events.index');
+});
+
 
 Route::prefix('/events')->controller(EventsController::class)->group(function () {
     Route::post('/', 'index')->name('admin.events.index');
