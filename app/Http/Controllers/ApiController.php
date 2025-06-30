@@ -22,7 +22,7 @@ class ApiController extends Controller
         if (!$produto) {
             return response()->json([
                 'status' => 'erro',
-                'mensagem' => 'Produto não encontrado.'
+                'mensagem' => 'Produto não encontrado. para o codigo '.$codigo
             ], 200);
         }
 
