@@ -27,17 +27,17 @@ class ApiController extends Controller
         //     ], 404);
         // }
 
-        // return response()->json([
-        //     'status' => 'sucesso',
-        //     'produto' => [
-        //         'id' => $produto->id,
-        //         'nome' => $produto->name,
-        //         'descricao' => $produto->description,
-        //         'preco' => number_format($produto->price, 2, ',', '.'),
-        //         'cod_barra' => $produto->cod_barra,
-        //         'categoria' => optional($produto->categoria)->nome,
-        //         'sistema' => $produto->sistema_display, // acessor automático
-        //     ]
-        // ]);
+        return response()->json([
+            'status' => 'sucesso',
+            'produto' => [
+                'id' => $produto->id,
+                'nome' => $produto->name,
+                'descricao' => $produto->description,
+                'preco' => number_format($produto->price, 2, ',', '.'),
+                'cod_barra' => $produto->cod_barra,
+                'categoria' => optional($produto->categoria)->nome,
+                'sistema' => $produto->sistema_display, // acessor automático
+            ]
+        ]);
     }
 }
