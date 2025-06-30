@@ -11,7 +11,6 @@ class ApiController extends Controller
     public function getProduto(Request $request)
     {
         $codigo = $request->codigo;
-        dd($codigo);
         if (!$codigo) {
             return response()->json([
                 'status' => 'erro',
