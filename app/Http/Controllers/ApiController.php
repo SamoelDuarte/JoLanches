@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request; // ✅ CORRETO
+
 
 class ApiController extends Controller
 {
