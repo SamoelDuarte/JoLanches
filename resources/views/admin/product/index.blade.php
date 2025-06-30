@@ -40,6 +40,7 @@
                         <th class="rounded-image-column">Imagem</th>
                         <th>Nome</th>
                         <th>Descrição</th>
+                        <th>Cod. Barra</th>
                         <th>Preço</th>
                         <th>Site/Sistema</th>
                         <th class="element-center">Ações</th>
@@ -55,6 +56,7 @@
                             </td>
                             <td>{{ $product->name }}</td>
                             <td>{!! $product->description !!}</td>
+                            <td>{!! $product->cod_barra !!}</td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->sistema_display }}</td>
                             <td style="text-align: center;">
