@@ -10,8 +10,8 @@ class ApiController extends Controller
 {
     public function getProduto(Request $request)
     {
-        $codigo = $request('codigo');
-        dd("codigo".$codigo);
+        $codigo = $request->all();
+        dd($codigo);
         if (!$codigo) {
             return response()->json([
                 'status' => 'erro',
