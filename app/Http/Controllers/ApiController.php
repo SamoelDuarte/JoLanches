@@ -18,7 +18,7 @@ class ApiController extends Controller
         //     ], 400);
         // }
 
-        // $produto = Product::where('cod_barra', $codigo)->first();
+        $produto = Product::where('cod_barra', $codigo)->first();
 
         // if (!$produto) {
         //     return response()->json([
