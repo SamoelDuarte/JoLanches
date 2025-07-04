@@ -67,8 +67,7 @@ class ApiController extends Controller
             'price' => str_replace(',', '.', $request->input('preco')),
             'sistem' => 1,
             'category_id' => null,
-            'description' => null,
-            'imageInput' => null
+            'description' => null
         ]);
 
         return response()->json([
