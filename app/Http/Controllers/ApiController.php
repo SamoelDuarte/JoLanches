@@ -22,7 +22,7 @@ class ApiController extends Controller
         if (!$produto) {
             return response()->json([
                 'status' => 'erro',
-                'mensagem' => 'Produto não encontrado. para o codigo '.$codigo
+                'mensagem' => 'Produto não encontrado. para o codigo ' . $codigo
             ], 200);
         }
 
@@ -37,6 +37,44 @@ class ApiController extends Controller
                 'categoria' => optional($produto->categoria)->nome,
                 'sistema' => $produto->sistema_display, // acessor automático
             ]
+        ]);
+    }
+    public function cadastrarProduto(Request $request)
+    {
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'preco' => 'required|regex:/^\d+(\,\d{1,2})?$/'
+        ], [
+            'preco.regex' => 'O preço deve estar no formato válido, ex: 9,99'
+        ]);
+
+        $codigo = $request->input('codigo');
+
+        // Se tiver código, verifica se já existe
+        if (!empty($codigo)) {
+            $existe = Product::where('cod_barra', $codigo)->exists();
+            if ($existe) {
+                return response()->json([
+                    'status' => 'erro',
+                    'mensagem' => 'Este produto já está cadastrado com esse código de barras'
+                ], 409);
+            }
+        }
+
+        $produto = Product::create([
+            'cod_barra' => $codigo, // pode ser null
+            'name' => $request->input('nome'),
+            'price' => str_replace(',', '.', $request->input('preco')),
+            'sistem' => 1,
+            'category_id' => null,
+            'description' => null,
+            'imageInput' => null
+        ]);
+
+        return response()->json([
+            'status' => 'sucesso',
+            'mensagem' => 'Produto cadastrado com sucesso',
+            'produto' => $produto
         ]);
     }
 }
