@@ -34,11 +34,11 @@ Route::post('/git-webhook', [GitWebhookController::class, 'handle']);
 |
 */
 
-Route::prefix('/api')->controller(ApiController::class)->group(function () {
-    Route::post('/get-produto', 'getProduto')->name('admin.events.index');
-    Route::post('/cadastrar-produto', 'cadastrarProduto');
+// Route::prefix('/api')->controller(ApiController::class)->group(function () {
+//     Route::post('/get-produto', 'getProduto')->name('admin.events.index');
+//     Route::post('/cadastrar-produto', 'cadastrarProduto');
 
-});
+// });
 
 
 Route::prefix('/events')->controller(EventsController::class)->group(function () {
